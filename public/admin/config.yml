@@ -27,8 +27,7 @@ collections:
     label: Blog
     label_singular: Article
     description: >
-      Articles on the Blog page, newest first. The Blog link appears in the menu
-      once there is at least one article that is not a draft.
+      Articles on the Blog page, newest first.
     folder: src/content/blog
     extension: md
     format: frontmatter
