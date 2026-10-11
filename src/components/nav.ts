@@ -5,7 +5,7 @@ export const NAV = [
   { key: 'season',   label: 'Season',   href: '/season/' },
   { key: 'team',     label: 'Team',     href: '/team/' },
   { key: 'outreach', label: 'Outreach', href: '/outreach/' },
-  { key: 'blog',     label: 'Blog',     href: '/blog/' },
+  { key: 'updates',  label: 'Updates',  href: '/updates/' },
   { key: 'sponsors', label: 'Sponsors', href: '/sponsors/' },
 ] as const;
 export type NavKey = (typeof NAV)[number]['key'] | 'home' | 'sponsor';

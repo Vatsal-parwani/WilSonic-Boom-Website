@@ -23,12 +23,12 @@ public_folder: /images
 
 collections:
 
-  - name: blog
-    label: Blog
-    label_singular: Article
+  - name: updates
+    label: Updates
+    label_singular: Update
     description: >
-      Articles on the Blog page, newest first.
-    folder: src/content/blog
+      Posts on the Updates page, newest first.
+    folder: src/content/updates
     extension: md
     format: frontmatter
     create: true
@@ -41,11 +41,11 @@ collections:
       - { name: date, label: Date, widget: datetime, type: date, format: "YYYY-MM-DD" }
       - { name: author, label: Written by, widget: string, required: false }
       - { name: summary, label: Summary, widget: text, required: false,
-          hint: "One or two sentences. Shown under the title, on the Blog page and in link previews." }
-      - { name: cover, label: Cover picture, widget: image, required: false, hint: "Landscape. Shown at the top of the article and beside it in the list." }
+          hint: "One or two sentences. Shown under the title, on the Updates page and in link previews." }
+      - { name: cover, label: Cover picture, widget: image, required: false, hint: "Landscape. Shown at the top of the update and beside it in the list." }
       - { name: draft, label: Draft, widget: boolean, default: false, required: false,
           hint: "A draft shows in the local preview only, never on the live site." }
-      - { name: body, label: Article, widget: markdown }
+      - { name: body, label: Text, widget: markdown }
 
   # ── SEASONS — one entry per FTC season; robot versions live inside ─────────
   - name: seasons

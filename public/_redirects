@@ -1,0 +1,3 @@
+# The page was briefly called Blog; old links still arrive.
+/blog      /updates/        301
+/blog/*    /updates/:splat  301

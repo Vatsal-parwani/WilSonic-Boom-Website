@@ -1989,7 +1989,7 @@ button.cal__d.is-on::after {
 @media (max-width: 620px) { .slog { grid-template-columns: minmax(0, 1fr); } }
 
 /* ══════════════════════════════════════════════════════════════════════════
-   /blog — the list of articles, and one article
+   /updates — the list of updates, and one update
    ══════════════════════════════════════════════════════════════════════════ */
 .posts { border-top: 1px solid var(--seam); }
 .post {

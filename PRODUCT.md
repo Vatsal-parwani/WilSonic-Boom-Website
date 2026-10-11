@@ -67,7 +67,7 @@ It must be supplied by the user, never invented.
 ## Capabilities and Constraints
 
 - **Scope:** six pages — Home (the complete sponsor pitch on its own), Robot, Season, Team,
-  Outreach, Sponsors (the conversion page). A blog was added at the team's request (the Media sub-team writes
+  Outreach, Sponsors (the conversion page). An Updates page (a blog) was added at the team's request (the Media sub-team writes
   the articles).
 - **Deliverable:** four directions were built for comparison; the user chose **V1 —
   Machined** (`v1-machined/`) and the other three were removed. All further work is on V1.

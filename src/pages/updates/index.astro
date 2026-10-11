@@ -2,12 +2,12 @@
 import Base from '../../layouts/Base.astro';
 import PageHead from '../../components/PageHead.astro';
 import Close from '../../components/Close.astro';
-import { posts, longDate } from '../../lib/blog';
+import { posts, longDate } from '../../lib/updates';
 import { url, href } from '../../components/url';
 ---
-<Base title="Blog" current="blog" description="Articles from Wilsonic Boom, FTC team 33001: the robot, the season and the team.">
+<Base title="Updates" current="updates" description="Updates from Wilsonic Boom, FTC team 33001: the robot, the season and the team.">
 
-  <PageHead lines={['Blog.']} />
+  <PageHead lines={['Updates.']} />
 
   <section class="band band--tight" id="articles">
     <div class="wrap">
@@ -15,7 +15,7 @@ import { url, href } from '../../components/url';
         <ol class="posts">
           {posts.map((p) => (
             <li>
-              <a class:list={['post', { 'post--cover': p.cover }]} href={url(`/blog/${p.slug}/`)}>
+              <a class:list={['post', { 'post--cover': p.cover }]} href={url(`/updates/${p.slug}/`)}>
                 {p.cover && <span class="post__cover"><img src={href(p.cover)} alt="" loading="lazy" decoding="async" /></span>}
                 <span class="post__date num">{longDate(p.date)}{p.draft && ' · draft'}</span>
                 <span class="post__main">
@@ -28,7 +28,7 @@ import { url, href } from '../../components/url';
           ))}
         </ol>
       ) : (
-        <p class="log__none">No articles yet.</p>
+        <p class="log__none">No updates yet.</p>
       )}
     </div>
   </section>

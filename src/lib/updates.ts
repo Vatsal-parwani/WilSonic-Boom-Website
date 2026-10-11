@@ -1,4 +1,4 @@
-// Articles live as Markdown files in src/content/blog/, one file each, written
+// Updates live as Markdown files in src/content/updates/, one file each, written
 // in the admin. A file marked `draft: true` shows in `npm run dev` only.
 
 interface Front {
@@ -12,7 +12,7 @@ export interface Post {
 }
 
 const files = import.meta.glob<{ frontmatter: Front; compiledContent: () => string | Promise<string> }>(
-  '../content/blog/*.md', { eager: true },
+  '../content/updates/*.md', { eager: true },
 );
 
 // The admin stores pictures and links as site-relative paths ("/images/…").

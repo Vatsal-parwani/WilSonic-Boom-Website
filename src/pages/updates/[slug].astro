@@ -1,7 +1,7 @@
 ---
 import Base from '../../layouts/Base.astro';
 import Close from '../../components/Close.astro';
-import { posts, longDate } from '../../lib/blog';
+import { posts, longDate } from '../../lib/updates';
 import { url, href } from '../../components/url';
 
 export function getStaticPaths() {
@@ -13,14 +13,14 @@ export function getStaticPaths() {
 const { post, newer, older } = Astro.props;
 const html = await post.html();
 ---
-<Base title={post.title} current="blog" description={post.summary || `${post.title}, from the Wilsonic Boom blog.`}>
+<Base title={post.title} current="updates" description={post.summary || `${post.title}, an update from Wilsonic Boom.`}>
 
   <article class="article">
     <header class="pagehead">
       <div class="wrap">
         <div class="plate plate--head plate--article" data-cut>
           <p class="article__meta num">
-            <a href={url('/blog/')}>Blog</a>
+            <a href={url('/updates/')}>Updates</a>
             <span>{longDate(post.date)}</span>
             {post.author && <span>{post.author}</span>}
           </p>
@@ -39,9 +39,9 @@ const html = await post.html();
       <div class="prose" set:html={html} />
 
       {(newer || older) && (
-        <nav class="article__nav" aria-label="More articles">
-          {older ? <a class="article__link" href={url(`/blog/${older.slug}/`)}><span>Older</span>{older.title}</a> : <span />}
-          {newer ? <a class="article__link article__link--next" href={url(`/blog/${newer.slug}/`)}><span>Newer</span>{newer.title}</a> : <span />}
+        <nav class="article__nav" aria-label="More updates">
+          {older ? <a class="article__link" href={url(`/updates/${older.slug}/`)}><span>Older</span>{older.title}</a> : <span />}
+          {newer ? <a class="article__link article__link--next" href={url(`/updates/${newer.slug}/`)}><span>Newer</span>{newer.title}</a> : <span />}
         </nav>
       )}
     </div>
