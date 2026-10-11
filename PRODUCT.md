@@ -67,8 +67,8 @@ It must be supplied by the user, never invented.
 ## Capabilities and Constraints
 
 - **Scope:** six pages — Home (the complete sponsor pitch on its own), Robot, Season, Team,
-  Outreach, Sponsors (the conversion page). No news/blog: a stale blog signals a dormant team,
-  so add one only if someone will own it monthly.
+  Outreach, Sponsors (the conversion page). A blog was added at the team's request (the Media sub-team writes
+  the articles); its nav link appears only once there is a published article.
 - **Deliverable:** four directions were built for comparison; the user chose **V1 —
   Machined** (`v1-machined/`) and the other three were removed. All further work is on V1.
 - **Conversion actions (both, confirmed):** email the team directly, and download the

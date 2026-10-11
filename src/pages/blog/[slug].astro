@@ -1,0 +1,51 @@
+---
+import Base from '../../layouts/Base.astro';
+import Close from '../../components/Close.astro';
+import { posts, longDate } from '../../lib/blog';
+import { url, href } from '../../components/url';
+
+export function getStaticPaths() {
+  return posts.map((post, i) => ({
+    params: { slug: post.slug },
+    props: { post, newer: posts[i - 1] ?? null, older: posts[i + 1] ?? null },
+  }));
+}
+const { post, newer, older } = Astro.props;
+const html = await post.html();
+---
+<Base title={post.title} current="blog" description={post.summary || `${post.title}, from the Wilsonic Boom blog.`}>
+
+  <article class="article">
+    <header class="pagehead">
+      <div class="wrap">
+        <div class="plate plate--head plate--article" data-cut>
+          <p class="article__meta num">
+            <a href={url('/blog/')}>Blog</a>
+            <span>{longDate(post.date)}</span>
+            {post.author && <span>{post.author}</span>}
+          </p>
+          <h1 class="etch article__title" data-etch>{post.title}</h1>
+          {post.summary && <p class="lede article__lede">{post.summary}</p>}
+        </div>
+      </div>
+    </header>
+
+    <div class="wrap article__wrap">
+      {post.cover && (
+        <figure class="article__cover" data-cut>
+          <img src={href(post.cover)} alt="" decoding="async" />
+        </figure>
+      )}
+      <div class="prose" set:html={html} />
+
+      {(newer || older) && (
+        <nav class="article__nav" aria-label="More articles">
+          {older ? <a class="article__link" href={url(`/blog/${older.slug}/`)}><span>Older</span>{older.title}</a> : <span />}
+          {newer ? <a class="article__link article__link--next" href={url(`/blog/${newer.slug}/`)}><span>Newer</span>{newer.title}</a> : <span />}
+        </nav>
+      )}
+    </div>
+  </article>
+
+  <Close />
+</Base>
