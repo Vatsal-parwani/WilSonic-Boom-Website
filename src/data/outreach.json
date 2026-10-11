@@ -2,7 +2,7 @@
   "numbers": [
     {
       "k": "Students across both FTC teams",
-      "v": "33"
+      "v": "34"
     },
     {
       "k": "Junior Robotics, Years 8–10",
@@ -15,47 +15,6 @@
     {
       "k": "Students reached every week",
       "v": "148"
-    }
-  ],
-  "activities": [
-    {
-      "date": "Planned",
-      "title": "Wilson's scrimmage",
-      "where": "Wilson's School",
-      "who": "Up to 15 visiting teams",
-      "body": "If we raise enough, we will host our own scrimmage: a practice competition for other FTC teams."
-    }
-  ],
-  "clubs": [
-    {
-      "name": "Junior Robotics",
-      "who": "Years 8–10",
-      "students": "40",
-      "body": "The school’s junior robotics club. We give it FTC equipment and mentoring, so the programme keeps growing."
-    },
-    {
-      "name": "KS4 Coding Club",
-      "who": "Years 10–11",
-      "students": "30",
-      "body": "Programming for GCSE-age students."
-    },
-    {
-      "name": "Computing Society",
-      "who": "Years 10–13",
-      "students": "30",
-      "body": "Talks and projects in computing beyond the syllabus."
-    },
-    {
-      "name": "Robotics Industry Club",
-      "who": "All years",
-      "students": "15",
-      "body": "How robotics is used in industry, and the careers behind it."
-    },
-    {
-      "name": "CAD Club",
-      "who": "All years",
-      "students": "30",
-      "body": "Design and 3D modelling, planned to run next."
     }
   ],
   "sessions": [
@@ -112,6 +71,47 @@
       "title": "KS4 Coding Club",
       "who": "Years 10–11",
       "reached": "30"
+    }
+  ],
+  "clubs": [
+    {
+      "name": "Junior Robotics",
+      "who": "Years 8–10",
+      "students": "40",
+      "body": "The school’s junior robotics club. We give it FTC equipment and mentoring, so the programme keeps growing."
+    },
+    {
+      "name": "KS4 Coding Club",
+      "who": "Years 10–11",
+      "students": "30",
+      "body": "Programming for GCSE-age students."
+    },
+    {
+      "name": "Computing Society",
+      "who": "Years 10–13",
+      "students": "30",
+      "body": "Talks and projects in computing beyond the syllabus."
+    },
+    {
+      "name": "Robotics Industry Club",
+      "who": "All years",
+      "students": "15",
+      "body": "How robotics is used in industry, and the careers behind it."
+    },
+    {
+      "name": "CAD Club",
+      "who": "All years",
+      "students": "30",
+      "body": "Design and 3D modelling, planned to run next."
+    }
+  ],
+  "activities": [
+    {
+      "date": "Planned",
+      "title": "Wilson's Scrimmage",
+      "where": "Wilson's School",
+      "who": "Up to 15 visiting teams",
+      "body": "If we raise enough, we will host our own scrimmage: a practice competition for other FTC teams."
     }
   ]
 }
