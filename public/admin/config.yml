@@ -11,7 +11,7 @@
 
 backend:
   name: github
-  repo: SudersenAiyyapan/WilSonic-Boom-Website
+  repo: Vatsal-parwani/WilSonic-Boom-Website
   branch: main            # the branch the live site is built from
 
 media_folder: public/images
