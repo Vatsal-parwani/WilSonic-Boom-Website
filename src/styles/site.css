@@ -242,18 +242,118 @@ h1.etch { font-size: clamp(2.6rem, 6.4vw, 5.6rem); }
 .ico { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 1.5; stroke-linecap: square; }
 
 /* ── hero ──────────────────────────────────────────────────────────────── */
-.hero { padding-top: calc(68px + clamp(48px, 8vw, 104px)); padding-bottom: 0; }
+.hero { padding-top: 0; padding-bottom: 0; }
 .hero__grid {
-  max-width: var(--maxw); margin-inline: auto; padding-inline: var(--gut);
+  max-width: min(1560px, 95vw); margin-inline: auto; padding-inline: var(--gut);
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  gap: clamp(20px, 2.4vw, 34px);
+  gap: clamp(22px, 2.5vw, 38px);
   align-items: stretch;
 }
+
+/* ── the video stage (integrated into the hero) ──────────────────────────
+   Taller than the screen; the pin is sticky, so scrolling through the extra
+   height grows the video frame from behind the h1 up to 100vw × 100vh.
+   Layer hierarchy inside .plate--title:
+     Top Layer (z-index: 3):    .vstage__title ("Wilsonic Boom.")
+     Middle Layer (z-index: 2): .vstage__frame (scaled video container)
+     Bottom Layer (z-index: 1): [data-vbottom] (paragraph text + sponsor buttons) */
+.vstage { --s: 0.34; --p: 0; position: relative; }
+.js .vstage { height: 260vh; height: 260svh; }
+.vstage__pin {
+  position: sticky; top: 0;
+  height: 100vh; height: 100svh;
+  padding-top: calc(68px + clamp(12px, 1.8vh, 26px));
+  overflow: hidden;
+}
+.vstage__frame {
+  position: absolute; left: 0; top: 0;
+  width: 100vw; height: 100vh;
+  z-index: 2;
+  transform-origin: 50% 50%;
+  will-change: transform;
+  background: #000;
+  /* hairline that stays 1px whatever the scale */
+  box-shadow: 0 0 0 calc(1px / var(--s, 1)) var(--seam);
+}
+.vstage__frame::after {
+  /* a scrim for the title to read against; gone once the video is full */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: rgba(8,8,9,0.48);
+  opacity: calc(1 - var(--p, 0));
+}
+.vstage__video { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+.vstage__title {
+  position: relative; z-index: 3;
+  width: fit-content;
+  font-size: clamp(2.9rem, 6.5vw, 5.8rem);
+  margin-top: clamp(14px, 1.8vh, 26px);
+  text-shadow: 0 2px 28px rgba(0,0,0,0.55), 0 1px 0 rgba(255,255,255,0.10), 0 -1px 0 rgba(0,0,0,0.55);
+  transform-origin: 50% 50%;
+  pointer-events: none;
+}
+
+[data-vbottom] {
+  position: relative; z-index: 1;
+  transition: none;
+}
+.vstage.is-scrolling [data-vbottom] {
+  opacity: 0 !important;
+  pointer-events: none !important;
+}
+
+.vstage__sound,
+.vstage__sound:hover,
+.vstage__sound:active,
+.vstage__sound:focus-visible,
+.vstage .vstage__sound,
+.vstage .vstage__sound:hover,
+.vstage .vstage__sound:active,
+.vstage .vstage__sound:focus-visible {
+  position: absolute; z-index: 4;
+  right: clamp(14px, 2.5vw, 36px); bottom: clamp(14px, 2.5vh, 36px);
+  transform: scale(calc(1 / var(--s, 1)));
+  transform-origin: 100% 100%;
+  transition: background .32s var(--ease), color .32s var(--ease), border-color .32s var(--ease);
+  cursor: pointer;
+  pointer-events: auto;
+}
+.vstage__sound { display: none; }
+.js .vstage__sound { display: inline-flex; }
+.vstage__sound * { pointer-events: none; }
+.vstage__sound .ico__on { display: none; }              /* muted: speaker with a cross */
+.vstage__sound.is-on .ico__on { display: inline; }    /* sound on: speaker with waves */
+.vstage__sound.is-on .ico__off { display: none; }
+.vstage__sound .ico { stroke-linejoin: round; }
+
+@media (max-width: 620px) {
+  .vstage__sound,
+  .vstage .vstage__sound {
+    padding: 8px 12px;
+    font-size: 0.72rem;
+    gap: 6px;
+    right: 10px;
+    bottom: 10px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .js .vstage { height: auto; }
+  .vstage__pin { position: relative; height: auto; overflow: visible; }
+}
 .plate--title {
-  --ch: 22px;
-  padding: clamp(30px, 3.6vw, 52px);
+  position: relative; z-index: 2;
+  padding: clamp(24px, 2.8vw, 42px) clamp(26px, 3.2vw, 48px);
+  min-height: clamp(520px, 74vh, 740px);
   display: flex; flex-direction: column;
+}
+.plate__plate {
+  --ch: 22px;
+  position: absolute; inset: 0;
+  overflow: hidden;
+  z-index: 0;
+  pointer-events: none;
 }
 /* The media plate hugs its 4:3 slot. Stretched to the title plate's height it
    became a hollow plate with dead metal under the photograph. */
@@ -264,8 +364,8 @@ h1.etch { font-size: clamp(2.6rem, 6.4vw, 5.6rem); }
    The box is fixed at 4:3, so any cut-out drops in with zero layout change.
    Nothing on it moves: the robot simply stands on its pedestal. */
 .podium {
-  position: relative; align-self: stretch;
-  min-height: clamp(360px, 40vw, 600px);
+  position: relative; z-index: 1; align-self: stretch;
+  min-height: clamp(520px, 74vh, 740px);
 }
 .podium__plate {
   --ch: 22px;
@@ -288,7 +388,7 @@ h1.etch { font-size: clamp(2.6rem, 6.4vw, 5.6rem); }
   position: absolute; left: 50%; top: 19%; z-index: 1;
   transform: translate(-50%, -50%);
   font-weight: 700; font-stretch: 118%; letter-spacing: -0.032em;
-  font-size: clamp(3.4rem, 7.6vw, 6.8rem); line-height: 0.94;
+  font-size: clamp(3.6rem, 8vw, 7.2rem); line-height: 0.94;
   color: var(--gold);
   text-shadow:
     0 1px 0 rgba(255,255,255,0.10),
@@ -324,7 +424,7 @@ h1.etch { font-size: clamp(2.6rem, 6.4vw, 5.6rem); }
 .podium__tag {
   position: absolute; left: 22px; top: 22px;
   display: flex; gap: 12px;
-  font-family: "Chivo Mono", monospace; font-size: 0.68rem;
+  font-family: "Chivo Mono", monospace; font-size: 0.72rem;
   letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--ink-3);
   padding-left: 22px;
@@ -334,17 +434,39 @@ h1.etch { font-size: clamp(2.6rem, 6.4vw, 5.6rem); }
 
 
 .serial {
-  display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 16px;
+  position: relative; z-index: 1;
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 18px;
   font-family: "Chivo Mono", monospace;
-  font-size: 0.7rem; letter-spacing: 0.1em;
-  padding-bottom: 20px;
+  font-size: 0.78rem; letter-spacing: 0.1em;
+  padding-bottom: 18px;
   border-bottom: 1px solid var(--seam-soft);
-  margin-bottom: clamp(28px, 3.4vw, 46px);
+  margin-bottom: clamp(12px, 1.6vh, 22px);
+}
+.serial__line {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px 16px;
+  margin-top: 40px;
+  white-space: nowrap;
+}
+@media (max-width: 620px) {
+  .serial__line {
+    white-space: normal;
+    flex-wrap: wrap;
+    gap: 6px 12px;
+  }
 }
 .serial__k { color: var(--ink-3); text-transform: uppercase; }
 .serial__v { color: var(--gold); }
 
-.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: auto; padding-top: clamp(32px, 4vw, 54px); }
+.hero .lede {
+  font-size: clamp(1.06rem, 1.3vw, 1.22rem);
+  max-width: 56ch;
+  margin-top: clamp(64px, 7.6vh, 96px);
+}
+
+.actions { display: flex; flex-wrap: wrap; gap: 14px; margin-top: auto; padding-top: clamp(20px, 2.6vh, 36px); }
+.hero .actions .btn { padding: 16px 28px; font-size: 0.86rem; }
 
 /* Machinist's rule beneath the hero — real graduations, long on the fives. */
 .rule--scale {
@@ -896,8 +1018,13 @@ h1.etch { font-size: clamp(2.6rem, 6.4vw, 5.6rem); }
 }
 
 /* the overture: one gold light-sweep travels the title plate on load */
-.plate--title { overflow: hidden; }
-.plate--title::after {
+.js .plate--title[data-rise],
+.js .plate--title[data-rise].is-in {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+.plate__plate::after {
   content: "";
   position: absolute; inset: 0; z-index: 2;
   pointer-events: none;
@@ -909,7 +1036,7 @@ h1.etch { font-size: clamp(2.6rem, 6.4vw, 5.6rem); }
     transparent 62%);
   transform: translateX(-115%);
 }
-.js .plate--title.is-lit::after {
+.js .plate--title.is-lit .plate__plate::after {
   animation: sweep 1500ms cubic-bezier(0.32, 0, 0.2, 1) 260ms both;
 }
 @keyframes sweep { to { transform: translateX(115%); } }
@@ -962,7 +1089,7 @@ h1.etch { font-size: clamp(2.6rem, 6.4vw, 5.6rem); }
   html { scroll-behavior: auto; }
   .js [data-rise], .js [data-rise].is-in { opacity: 1; transform: none; transition: none; }
   .js .etch .line > span { transform: none; transition: none; }
-  .js .plate--title.is-lit::after { animation: none; }
+  .js .plate--title.is-lit .plate__plate::after { animation: none; }
   .js .change__arrowline { stroke-dashoffset: 0; }
   .js .specs__row,
   .js [data-stamp] .dplate__r dd,
@@ -992,6 +1119,7 @@ h1.etch { font-size: clamp(2.6rem, 6.4vw, 5.6rem); }
 @media (max-width: 900px) {
   .topnav { display: none; }
   .hero__grid { grid-template-columns: minmax(0, 1fr); }
+  .plate--title { min-height: 0; }
   .podium { min-height: 0; aspect-ratio: 4 / 3; }
   .wrap--split { grid-template-columns: minmax(0, 1fr); }
   .split__l { position: static; }
@@ -1011,7 +1139,7 @@ h1.etch { font-size: clamp(2.6rem, 6.4vw, 5.6rem); }
   body { font-size: 16px; }
   :root { --ch: 10px; }
   .h2 { font-size: 1.85rem; }
-  .plate--title, .plate--media, .podium__plate { --ch: 16px; }
+  .plate--title, .plate__plate, .plate--media, .podium__plate { --ch: 16px; }
   .assembly__stage { --ch: 14px; }
   .roster { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .logos { grid-template-columns: minmax(0, 1fr); }
@@ -1657,16 +1785,16 @@ a.sstrip__k:hover { color: var(--ink); border-bottom-color: var(--gold-lo); }
 .mark__badge { width: 40px; height: 40px; flex: none; border-radius: 50%; }
 /* The badge is pinned to the plate's top-right like a stamped maker's mark;
    the serial details wrap beside it instead of pushing it onto its own line. */
-.serial { padding-right: 108px; min-height: 84px; align-content: flex-start; }
+.serial { padding-right: 110px; min-height: 82px; align-content: flex-start; }
 .serial__badge {
-  position: absolute; top: -10px; right: 0;
+  position: absolute; top: -13px; right: 0;
   width: 88px; height: 88px; border-radius: 50%;
 }
 .foot__id { display: grid; grid-template-columns: auto 1fr; column-gap: 16px; align-items: center; }
 .foot__badge { grid-row: span 2; width: 72px; height: 72px; border-radius: 50%; }
 @media (max-width: 620px) {
   .serial { padding-right: 76px; min-height: 60px; }
-  .serial__badge { width: 60px; height: 60px; top: -6px; }
+  .serial__badge { width: 60px; height: 60px; top: -11px; }
 }
 
 /* read by screen readers, not drawn */
