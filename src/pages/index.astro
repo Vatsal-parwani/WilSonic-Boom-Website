@@ -22,80 +22,66 @@ const mail = `mailto:${site.email}?subject=Sponsorship%20enquiry%20%E2%80%94%20F
 
   <!-- ═══ OPENING ═══ -->
   <section class="hero" id="top">
-    <div class="vstage" data-vstage>
-      <div class="vstage__pin" data-vpin>
-        <div class="hero__grid">
-          <div class="plate plate--title" data-vplate>
-            <div class="plate__plate" data-cut aria-hidden="true"></div>
-            <p class="serial">
-              <span class="serial__line">
-                <span class="serial__k">TEAM</span><span class="serial__v">{site.teamNumber}</span>
-                <span class="serial__k">SCHOOL</span><span class="serial__v">{site.school}, {site.town}</span>
-              </span>
-              <img class="serial__badge" src={url('/brand/badge-256.webp')} alt="The Wilsonic Boom badge" width="88" height="88" decoding="async" />
-            </p>
-            <h1 class="etch vstage__title" data-vtitle data-etch>Wilsonic<br>Boom.</h1>
-            <div class="vstage__frame" data-vframe>
-              <video class="vstage__video" data-vvideo src={url('/video/sponsorship-video.mp4')} autoplay muted loop playsinline preload="metadata" aria-label="Wilsonic Boom sponsorship video"></video>
-              <button class="btn btn--gold vstage__sound" data-vsound type="button" aria-pressed="false">
-                <svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 6 L5 6 L9 3 L9 13 L5 10 L2 10 Z" /><path class="ico__on" d="M11.5 5.5 Q13.5 8 11.5 10.5" /><path class="ico__on" d="M13 3.5 Q16 8 13 12.5" /><path class="ico__off" d="M11.5 6 L15 10 M15 6 L11.5 10" /></svg>
-                <span data-vsound-label>Unmute</span>
-              </button>
-            </div>
-            <p class="lede" data-vbottom>
-              The junior FIRST Tech Challenge team at Wilson&rsquo;s School in
-              Wallington{headcount && <>: {headcount}</>}. Our first season brought three awards:
-              Finalist Alliance and the Reach Award at Regionals, and the Sustain Award at
-              Nationals.
-            </p>
-            <div class="actions" data-vbottom>
-              <a class="btn btn--gold" href={mail}>Sponsor the team</a>
-              <a class="btn btn--ghost" href={href(site.sponsorshipPack)} download>
-                <svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 2 L8 11" /><path d="M4.5 7.5 L8 11 L11.5 7.5" /><path d="M3 13.5 L13 13.5" /></svg>
-                Sponsorship pack
-              </a>
-            </div>
-          </div>
-          <!-- The robot on a layered stage: a machined back plate with a grid and
-               the team number, a turntable, then the cut-out robot standing on it.
-               Still by design; the two hero boxes share one height. -->
-          <div class="podium" data-podium>
-            <div class="podium__plate" data-cut aria-hidden="true">
-              <div class="podium__grid"></div>
-              <span class="podium__num">{site.teamNumber}</span>
-            </div>
-            <!-- The turntable is drawn in the photo's own perspective: the camera
-                 looks down about 18°, so the floor ellipse is ~0.3 as deep as wide.
-                 The contact shade under the wheels is what makes it stand, not float. -->
-            <svg class="podium__table" viewBox="0 0 600 200" aria-hidden="true" focusable="false">
-              <defs>
-                <radialGradient id="podium-contact" cx="50%" cy="50%" r="50%">
-                  <stop offset="0" stop-color="#000" stop-opacity=".62" />
-                  <stop offset=".55" stop-color="#000" stop-opacity=".28" />
-                  <stop offset="1" stop-color="#000" stop-opacity="0" />
-                </radialGradient>
-              </defs>
-              <ellipse cx="300" cy="100" rx="290" ry="88" class="t-face" />
-              <ellipse cx="300" cy="100" rx="290" ry="88" class="t-ring" />
-              <ellipse cx="300" cy="100" rx="236" ry="71" class="t-ring t-ring--in" />
-              {Array.from({ length: 72 }, (_, i) => {
-                const a = (i / 72) * Math.PI * 2;
-                const long = i % 6 === 0;
-                const r1 = long ? 0.9 : 0.95;
-                return <line x1={300 + 290 * Math.cos(a)} y1={100 + 88 * Math.sin(a)} x2={300 + 290 * r1 * Math.cos(a)} y2={100 + 88 * r1 * Math.sin(a)} class:list={['t-tick', { 't-tick--long': long }]} />;
-              })}
-              <ellipse cx="300" cy="112" rx="215" ry="52" fill="url(#podium-contact)" />
-            </svg>
-            <figure class="podium__robot">
-              {site.homePhoto
-                ? <img src={href(site.homePhoto)} alt="The Wilsonic Boom competition robot" decoding="async" fetchpriority="high" />
-                : <div class="podium__empty"><p class="slot__name">Robot, cut-out</p><p class="slot__spec">Transparent PNG · three-quarter view · 2400 px wide</p></div>}
-            </figure>
-            <p class="podium__tag" aria-hidden="true">
-              <span>{season.game}</span><span>{season.years}</span>
-            </p>
-          </div>
+    <div class="hero__grid">
+      <div class="plate plate--title" data-cut>
+        <p class="serial">
+          <span class="serial__k">TEAM</span><span class="serial__v">{site.teamNumber}</span>
+          <span class="serial__k">SCHOOL</span><span class="serial__v">{site.school.replace(' School', '')}, {site.town}</span>
+          <img class="serial__badge" src={url('/brand/badge-256.webp')} alt="The Wilsonic Boom badge" width="88" height="88" decoding="async" />
+        </p>
+        <h1 class="etch" data-etch>Wilsonic<br>Boom.</h1>
+        <p class="lede">
+          The junior FIRST Tech Challenge team at Wilson&rsquo;s School in
+          Wallington{headcount && <>: {headcount}</>}. Our first season brought three awards:
+          Finalist Alliance and the Reach Award at Regionals, and the Sustain Award at
+          Nationals.
+        </p>
+        <div class="actions">
+          <a class="btn btn--gold" href={mail}>Sponsor the team</a>
+          <a class="btn btn--ghost" href={href(site.sponsorshipPack)} download>
+            <svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 2 L8 11" /><path d="M4.5 7.5 L8 11 L11.5 7.5" /><path d="M3 13.5 L13 13.5" /></svg>
+            Sponsorship pack
+          </a>
         </div>
+      </div>
+      <!-- The robot on a layered stage: a machined back plate with a grid and
+           the team number, a turntable, then the cut-out robot standing on it.
+           Still by design; the two hero boxes share one height. -->
+      <div class="podium" data-podium>
+        <div class="podium__plate" data-cut aria-hidden="true">
+          <div class="podium__grid"></div>
+          <span class="podium__num">{site.teamNumber}</span>
+        </div>
+        <!-- The turntable is drawn in the photo's own perspective: the camera
+             looks down about 18°, so the floor ellipse is ~0.3 as deep as wide.
+             The contact shade under the wheels is what makes it stand, not float. -->
+        <svg class="podium__table" viewBox="0 0 600 200" aria-hidden="true" focusable="false">
+          <defs>
+            <radialGradient id="podium-contact" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#000" stop-opacity=".62" />
+              <stop offset=".55" stop-color="#000" stop-opacity=".28" />
+              <stop offset="1" stop-color="#000" stop-opacity="0" />
+            </radialGradient>
+          </defs>
+          <ellipse cx="300" cy="100" rx="290" ry="88" class="t-face" />
+          <ellipse cx="300" cy="100" rx="290" ry="88" class="t-ring" />
+          <ellipse cx="300" cy="100" rx="236" ry="71" class="t-ring t-ring--in" />
+          {Array.from({ length: 72 }, (_, i) => {
+            const a = (i / 72) * Math.PI * 2;
+            const long = i % 6 === 0;
+            const r1 = long ? 0.9 : 0.95;
+            return <line x1={300 + 290 * Math.cos(a)} y1={100 + 88 * Math.sin(a)} x2={300 + 290 * r1 * Math.cos(a)} y2={100 + 88 * r1 * Math.sin(a)} class:list={['t-tick', { 't-tick--long': long }]} />;
+          })}
+          <ellipse cx="300" cy="112" rx="215" ry="52" fill="url(#podium-contact)" />
+        </svg>
+        <figure class="podium__robot">
+          {site.homePhoto
+            ? <img src={href(site.homePhoto)} alt="The Wilsonic Boom competition robot" decoding="async" fetchpriority="high" />
+            : <div class="podium__empty"><p class="slot__name">Robot, cut-out</p><p class="slot__spec">Transparent PNG · three-quarter view · 2400 px wide</p></div>}
+        </figure>
+        <p class="podium__tag" aria-hidden="true">
+          <span>{season.game}</span><span>{season.years}</span>
+        </p>
       </div>
     </div>
     <div class="rule rule--scale" aria-hidden="true">
@@ -186,8 +172,4 @@ const mail = `mailto:${site.email}?subject=Sponsorship%20enquiry%20%E2%80%94%20F
   </section>
 
   <Close />
-
-  <script>
-    import '../scripts/video-stage.js';
-  </script>
 </Base>

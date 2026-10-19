@@ -27,7 +27,7 @@ async function pull() {
   }
 }
 
-const astro = spawn('npx', ['astro', 'dev', ...process.argv.slice(2)], { stdio: 'inherit', shell: process.platform === 'win32' });
+const astro = spawn('npx', ['astro', 'dev', ...process.argv.slice(2)], { stdio: 'inherit' });
 astro.on('exit', (code) => process.exit(code ?? 0));
 for (const sig of ['SIGINT', 'SIGTERM']) process.on(sig, () => astro.kill(sig));
 
