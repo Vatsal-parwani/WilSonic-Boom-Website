@@ -93,8 +93,12 @@
     var innerLeft = plateLeft + padL;
     var innerWidth = Math.max(220, plateRect.width - padL - padR);
 
+    /* The starting size is exactly the panel's inner width. A floor on the
+       scale (it used to be 0.22) made the video wider than the panel on very
+       wide screens, where the panel is a small fraction of the window, so it
+       spilled across the robot panel on the right. */
     var targetW = innerWidth;
-    S0 = clamp(targetW / vw, 0.22, 0.95);
+    S0 = clamp(targetW / vw, 0.05, 0.95);
     var w0 = S0 * vw;
     var h0 = S0 * baseH;
 
