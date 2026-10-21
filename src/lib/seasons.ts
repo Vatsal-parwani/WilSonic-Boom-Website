@@ -21,7 +21,7 @@ export interface Season {
   years: string; game: string; draft?: boolean; summary: string;
   aims?: { aim: string; done?: boolean }[];   // what the team set out to do; done = met
   record: KV[];
-  awards: { name: string; event: string; note: string }[];
+  awards: { name: string; event: string; note: string; image?: string }[];
   events: { date: string; name: string; venue: string; result: string; note?: string }[];
   robot: { software: string; versions: Version[] };
 }

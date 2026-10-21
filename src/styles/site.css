@@ -1286,6 +1286,7 @@ a.inline:hover { border-bottom-color: var(--gold-hi); }
 .log__note { font-size: 0.86rem; color: var(--ink-2); }
 .awards { display: grid; gap: 14px; }
 .award { padding: clamp(20px, 2.2vw, 28px); }
+.award__image { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; margin-bottom: 18px; }
 .award__name { font-weight: 700; font-stretch: 112%; font-size: 1.15rem; color: var(--gold-hi); }
 .award__event {
   margin-top: 4px;
