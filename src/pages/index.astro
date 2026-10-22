@@ -41,10 +41,17 @@ const mail = `mailto:${site.email}?subject=Sponsorship%20enquiry%20%E2%80%94%20F
                 <svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 6 L5 6 L9 3 L9 13 L5 10 L2 10 Z" /><path class="ico__on" d="M11.5 5.5 Q13.5 8 11.5 10.5" /><path class="ico__on" d="M13 3.5 Q16 8 13 12.5" /><path class="ico__off" d="M11.5 6 L15 10 M15 6 L11.5 10" /></svg>
                 <span data-vsound-label>Unmute</span>
               </button>
+              <button class="vstage__close" data-vclose type="button" aria-label="Close video view">
+                <svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                  <path d="M4 4 L12 12 M12 4 L4 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                </svg>
+              </button>
             </div>
             <p class="lede" data-vbottom>
-              The junior FIRST Tech Challenge team at Wilson&rsquo;s School in
-              Wallington{headcount && <>: {headcount}</>}. Our first season brought three awards:
+              We are a team of student engineers at Wilson’s School competing in <strong>FIRST® Tech Challenge (FTC) UK</strong>—a national youth robotics championship. Every year, a brand-new game challenge is revealed worldwide. Over the course of a annual <strong>“Season”</strong> (September to Spring), we design, build, and program an autonomous and driver-controlled robot from scratch to compete against schools across the country.
+            </p>
+            <p class="lede" data-vbottom>
+              Our first season brought three awards:
               Finalist Alliance and the Reach Award at Regionals, and the Sustain Award at
               Nationals.
             </p>
@@ -106,7 +113,38 @@ const mail = `mailto:${site.email}?subject=Sponsorship%20enquiry%20%E2%80%94%20F
       <SponsorStrip />
     </div>
   </section>
+<!-- ═══ WHAT IS FTC ═══ -->
+<section class="band band--alt" id="ftc-primer">
+  <div class="wrap">
+    <h2 class="h2 etch" data-etch>How the competition works</h2>
+    <p class="body" style="max-width: 65ch; margin-bottom: 2rem;">
+      FIRST Tech Challenge (FTC) UK brings together hundreds of student teams to solve engineering challenges in a sports-like tournament format.
+    </p>
+    
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+      <div class="plate" style="padding: 1.5rem;">
+        <h3 style="font-size: 1.2rem; color: var(--gold, #d4af37); margin-bottom: 0.5rem;">1. The Season Kickoff</h3>
+        <p class="body" style="font-size: 0.95rem;">
+          In September, the annual game is revealed worldwide. Teams get just a few months to brainstorm, CAD, and build a robot from scratch.
+        </p>
+      </div>
 
+      <div class="plate" style="padding: 1.5rem;">
+        <h3 style="font-size: 1.2rem; color: var(--gold, #d4af37); margin-bottom: 0.5rem;">2. Scrimmages (Practice Matches)</h3>
+        <p class="body" style="font-size: 0.95rem;">
+          A <strong>scrimmage</strong> is an informal, low-stakes practice event! Teams bring early robot prototypes to test driving, discover design flaws, and practice alliance matches with zero pressure.
+        </p>
+      </div>
+
+      <div class="plate" style="padding: 1.5rem;">
+        <h3 style="font-size: 1.2rem; color: var(--gold, #d4af37); margin-bottom: 0.5rem;">3. Qualifiers & Nationals</h3>
+        <p class="body" style="font-size: 0.95rem;">
+          Official regional tournaments where team robots face off 2-vs-2 in timed arena matches to earn trophies and qualify for the UK National Championships.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
   <!-- ═══ THE CASE ═══ -->
   <section class="band" id="why">
     <div class="wrap wrap--split">
@@ -129,10 +167,10 @@ const mail = `mailto:${site.email}?subject=Sponsorship%20enquiry%20%E2%80%94%20F
     </div>
   </section>
 
-  <!-- ═══ RECORD, AT A GLANCE ═══ -->
+ <!-- ═══ RECORD, AT A GLANCE ═══ -->
   <section class="band band--alt" id="record">
     <div class="wrap">
-      <h2 class="h2 etch" data-etch>Record</h2>
+      <h2 class="h2 etch" data-etch>Record & Achievements</h2>
       <div class="record">
         <DataPlate title="Competition record" serial={site.teamNumber} rows={season.record} foot={['FIRST® Tech Challenge', "Wilson's School · Wallington"]} />
         <div class="record__side">
@@ -140,6 +178,35 @@ const mail = `mailto:${site.email}?subject=Sponsorship%20enquiry%20%E2%80%94%20F
           <p class="body">{season.summary}</p>
           <MoreLink href="/season/">Every event and result</MoreLink>
         </div>
+      </div>
+
+      <!-- AWARDS & PROOF GALLERY -->
+      <div class="awards-gallery" style="margin-top: 2.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
+        
+        <figure style="margin: 0; background: var(--bg-plate, rgba(0,0,0,0.2)); border: 1px solid rgba(255,255,255,0.1); padding: 1rem; border-radius: 4px;">
+          <img src={url('/images/reach_award.jpeg')} alt="The Reach Award" style="width: 100%; height: auto; border-radius: 2px; display: block;" decoding="async" />
+          <figcaption style="font-size: 0.9rem; margin-top: 0.75rem; line-height: 1.4;">
+            <strong style="color: var(--gold, #d4af37);">Reach Award</strong><br>
+            <span style="opacity: 0.8; font-size: 0.85rem;">Won at Regionals for expanding STEM outreach and running school clubs.</span>
+          </figcaption>
+        </figure>
+
+        <figure style="margin: 0; background: var(--bg-plate, rgba(0,0,0,0.2)); border: 1px solid rgba(255,255,255,0.1); padding: 1rem; border-radius: 4px;">
+          <img src={url('/images/finalist_alliance.png')} alt="Finalist Alliance Trophy" style="width: 100%; height: auto; border-radius: 2px; display: block;" decoding="async" />
+          <figcaption style="font-size: 0.9rem; margin-top: 0.75rem; line-height: 1.4;">
+            <strong style="color: var(--gold, #d4af37);">Finalist Alliance</strong><br>
+            <span style="opacity: 0.8; font-size: 0.85rem;">Secured during high-stakes regional match playoffs.</span>
+          </figcaption>
+        </figure>
+
+        <figure style="margin: 0; background: var(--bg-plate, rgba(0,0,0,0.2)); border: 1px solid rgba(255,255,255,0.1); padding: 1rem; border-radius: 4px;">
+          <img src={url('/images/robot-v2-1-nationals.webp')} alt="Robot at UK Nationals" style="width: 100%; height: auto; border-radius: 2px; display: block;" decoding="async" />
+          <figcaption style="font-size: 0.9rem; margin-top: 0.75rem; line-height: 1.4;">
+            <strong style="color: var(--gold, #d4af37);">Sustain Award (Nationals)</strong><br>
+            <span style="opacity: 0.8; font-size: 0.85rem;">Competing and winning recognition at the UK National Championship.</span>
+          </figcaption>
+        </figure>
+
       </div>
     </div>
   </section>

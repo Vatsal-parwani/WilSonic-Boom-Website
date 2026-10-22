@@ -2200,3 +2200,66 @@ button.cal__d.is-on::after {
   .post__cover { max-width: 320px; }
 }
 @media (prefers-reduced-motion: reduce) { .post, .post__cover img { transition: none; } .post:hover .post__cover img { transform: none; } }
+/* ✖️ Full-Screen Video Close Button (Placed on the Bottom-Left) */
+.vstage__close {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  z-index: 9999;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+.vstage__close:hover {
+  background: var(--gold, #d4af37);
+  color: #000;
+  transform: scale(1.08);
+}
+
+.vstage__close .ico {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Appears automatically when the video reaches full screen */
+.vstage.is-full .vstage__close {
+  opacity: 1;
+  pointer-events: auto;
+}
+/* Allow the title plate to expand and show all text when force-closed */
+.vstage.is-force-closed .plate--title {
+  overflow-y: visible !important;
+  max-height: none !important;
+}
+
+/* Ensure the pin container allows content flow when closed */
+.vstage.is-force-closed .vstage__pin {
+  height: auto !important;
+  position: relative !important;
+}
+/* Collapse the scroll gap and release the sticky container when force-closed */
+.vstage.is-force-closed {
+  height: auto !important;
+}
+
+.vstage.is-force-closed .vstage__pin {
+  position: relative !important;
+  height: auto !important;
+  top: auto !important;
+  transform: none !important;
+}
+
+.vstage.is-force-closed .hero__grid {
+  position: relative !important;
+}

@@ -1,22 +1,3 @@
-/* ══════════════════════════════════════════════════════════════════════════
-   HOME · SCROLL-LINKED VIDEO STAGE (INTEGRATED HERO)
-   The hero's stage is taller than the screen and its pin is sticky, so
-   scrolling through the extra height grows the video container from behind the
-   "Wilsonic Boom." h1 up to the full 100vw × 100vh viewport.
-
-   Initial Layering inside .plate--title:
-   - Top Layer (z-index: 3):    [data-vtitle] ("Wilsonic Boom.")
-   - Middle Layer (z-index: 2): [data-vframe] (scaled-down video container)
-   - Bottom Layer (z-index: 1): [data-vbottom] (paragraph text + sponsor buttons)
-
-   Scroll Behavior:
-   - Bottom Layer: disappears immediately (opacity: 0, pointer-events: none)
-     the moment scrolling begins.
-   - Middle Layer: scales smoothly from behind the title to 100vw × 100vh.
-   - Top Layer: fades out and drops below the video (z-index: 1) as the video
-     scales up to full screen.
-   ══════════════════════════════════════════════════════════════════════════ */
-
 (function () {
   'use strict';
 
@@ -30,6 +11,7 @@
   var title = stage.querySelector('[data-vtitle]');
   var btn = stage.querySelector('[data-vsound]');
   var label = stage.querySelector('[data-vsound-label]');
+  var closeBtn = stage.querySelector('[data-vclose]');
   var bottomEls = Array.prototype.slice.call(stage.querySelectorAll('[data-vbottom]'));
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -42,6 +24,7 @@
   var stageTopVal = 0;
   var travelVal = 1;
   var progress = 0;
+  var forceClosed = false; // Tracks if user manually clicked close
 
   function clamp(v, lo, hi) { return Math.min(hi, Math.max(lo, v)); }
   function smooth(a, b, v) {
@@ -53,22 +36,14 @@
     if (video && video.videoWidth > 0 && video.videoHeight > 0) {
       return video.videoHeight / video.videoWidth;
     }
-    return 1080 / 1920; /* 0.5625: native 1920 × 1080 (16:9) aspect ratio */
+    return 1080 / 1920;
   }
 
-  /* Measure the title and plate inside the sticky pin so the video starts
-     at its exact native 16:9 aspect ratio inside the .plate--title card behind
-     "Wilsonic Boom." with a clear gap above the paragraph below it, and expands
-     to 100vw × 100vh at (0, 0) of the viewport when progress reaches 1. */
   function measure() {
     if (!title || !pin || !plate || !frame) return;
     vw = window.innerWidth;
     vh = window.innerHeight;
     var aspect = getVideoAspect();
-    /* Setting baseH = vw * aspect guarantees that at progress = 0 the scaled
-       frame (w0 = S0 * vw, h0 = S0 * baseH) has the exact 16:9 native aspect
-       ratio of the 1920×1080 video on every viewport size, never cropping
-       the bottom subtitles. As progress -> 1, curH interpolates to vh. */
     baseH = vw * aspect;
 
     var ledeEl = bottomEls[0];
@@ -93,21 +68,14 @@
     var innerLeft = plateLeft + padL;
     var innerWidth = Math.max(220, plateRect.width - padL - padR);
 
-    /* The starting size is exactly the panel's inner width. A floor on the
-       scale (it used to be 0.22) made the video wider than the panel on very
-       wide screens, where the panel is a small fraction of the window, so it
-       spilled across the robot panel on the right. */
     var targetW = innerWidth;
     S0 = clamp(targetW / vw, 0.05, 0.95);
     var w0 = S0 * vw;
     var h0 = S0 * baseH;
 
-    /* Align the video frame on the left with the text (innerLeft), shifted 9px
-       to the left in unscrolled format (along with the unmute button). */
     var frameCX = innerLeft + w0 * 0.5 - 9;
     DX0 = frameCX - vw * 0.5;
 
-    /* Place the full 16:9 initial video frame cleanly below .serial */
     var serialEl = plate.querySelector('.serial');
     var serialBottom = serialEl
       ? (serialEl.getBoundingClientRect().bottom - pinRect.top)
@@ -115,12 +83,9 @@
     var gapAbove = vw <= 620 ? 10 : 14;
     var topBound = serialBottom + gapAbove;
 
-    /* Frame top edge at topBound, bottom edge at frameBottom = topBound + h0 */
     titleCY = topBound + h0 * 0.5;
     var frameBottom = topBound + h0;
 
-    /* Align the "Wilsonic Boom." header with the bottom of the video frame,
-       ensuring the entire header remains inside the frame (topBound <= desiredTitleTop). */
     var titleH = tRect.height;
     var padBottomInsideFrame = 8;
     var desiredTitleBottom = frameBottom - padBottomInsideFrame;
@@ -157,15 +122,13 @@
       'translate3d(' + tx.toFixed(2) + 'px, ' + ty.toFixed(2) + 'px, 0) scale(' + s.toFixed(4) + ')';
     stage.style.setProperty('--p', progress.toFixed(4));
 
-    /* Bottom Layer: instantly disappears the moment scroll is triggered */
-    var scrolled = progress > 0 || window.scrollY > stageTopVal;
+    var scrolled = (progress > 0 || window.scrollY > stageTopVal) && !forceClosed;
     stage.classList.toggle('is-scrolling', scrolled);
     bottomEls.forEach(function (el) {
       el.style.opacity = scrolled ? '0' : '1';
       el.style.pointerEvents = scrolled ? 'none' : '';
     });
 
-    /* Top Layer: fades out and falls below the video as it scales to full screen */
     if (title) {
       var out = smooth(0.55, 0.9, progress);
       title.style.opacity = (1 - out).toFixed(3);
@@ -174,12 +137,19 @@
       title.style.pointerEvents = 'none';
     }
 
-    stage.classList.toggle('is-full', progress >= 0.999);
+    stage.classList.toggle('is-full', progress >= 0.999 && !forceClosed);
   }
 
   function update() {
     if (!reduced) {
-      progress = clamp((window.scrollY - stageTopVal) / travelVal, 0, 1);
+      var currentScroll = window.scrollY;
+      // If user scrolls back near the top, reset the force-closed state
+      if (currentScroll <= stageTopVal + 20) {
+        forceClosed = false;
+        stage.classList.remove('is-force-closed');
+      }
+      // If forceClosed is true, lock progress at 0 (minimized)
+      progress = forceClosed ? 0 : clamp((currentScroll - stageTopVal) / travelVal, 0, 1);
     }
     render();
   }
@@ -187,7 +157,6 @@
   function setFull() {
     measure();
     if (reduced) { progress = 1; render(); return; }
-    /* 'instant' overrides the site's smooth-scroll, so the change is immediate */
     window.scrollTo({ top: stageTopVal + travelVal, behavior: 'instant' });
     progress = 1;
     render();
@@ -217,6 +186,32 @@
     syncButton();
   }
 
+  /* ── close button handler ─────────────────────────────────────────────── */
+  if (closeBtn) {
+    closeBtn.addEventListener('click', function (e) {
+      e.stopPropagation();
+
+      var oldScrollY = window.scrollY;
+      var oldStageHeight = stage.offsetHeight;
+
+      // Force video to minimize and collapse the scroll track
+      forceClosed = true;
+      stage.classList.add('is-force-closed');
+      progress = 0;
+      render();
+
+      // Measure the new height and adjust scroll position to prevent any jump
+      var newStageHeight = stage.offsetHeight;
+      var heightDiff = oldStageHeight - newStageHeight;
+
+      if (heightDiff > 0 && oldScrollY >= stageTopVal) {
+        window.scrollTo({
+          top: Math.max(stageTopVal, oldScrollY - heightDiff),
+          behavior: 'instant'
+        });
+      }
+    });
+  }
   /* ── don't decode a video nobody can see ───────────────────────────────── */
   if (video && 'IntersectionObserver' in window) {
     new IntersectionObserver(function (entries) {
