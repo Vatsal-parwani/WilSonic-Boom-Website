@@ -2263,3 +2263,60 @@ button.cal__d.is-on::after {
 .vstage.is-force-closed .hero__grid {
   position: relative !important;
 }
+/* YouTube-style Hover Overlay */
+.video-control-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ONLY allow controls to show on hover once the video has expanded past the thin initial strip */
+.vstage.is-video-large .vstage__frame:hover .video-control-overlay,
+.vstage.is-full .vstage__frame:hover .video-control-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Button styling */
+.video-control-btn {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  color: #fff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.video-control-btn:hover {
+  transform: scale(1.1);
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.video-control-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.skip-badge {
+  font-size: 9px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 2px;
+  letter-spacing: -0.5px;
+}

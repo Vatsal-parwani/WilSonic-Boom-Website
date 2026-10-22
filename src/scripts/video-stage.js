@@ -138,6 +138,8 @@
     }
 
     stage.classList.toggle('is-full', progress >= 0.999 && !forceClosed);
+    var isLarge = progress > 0.3 && !forceClosed;
+    stage.classList.toggle('is-video-large', isLarge);
   }
 
   function update() {
@@ -212,6 +214,58 @@
       }
     });
   }
+
+  /* ── YouTube-Style Video Hover Controls ───────────────────────────────── */
+  var playPauseBtn = stage.querySelector('#vid-playpause');
+  var rewindBtn = stage.querySelector('#vid-rewind');
+  var forwardBtn = stage.querySelector('#vid-forward');
+
+  if (video) {
+    if (rewindBtn) {
+      rewindBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        video.currentTime = Math.max(0, video.currentTime - 5);
+      });
+    }
+
+    if (forwardBtn) {
+      forwardBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        video.currentTime = Math.min(video.duration || 0, video.currentTime + 5);
+      });
+    }
+
+    if (playPauseBtn) {
+      var playIcon = playPauseBtn.querySelector('.icon-play');
+      var pauseIcon = playPauseBtn.querySelector('.icon-pause');
+
+      function updatePlayPauseIcon() {
+        if (video.paused) {
+          if (playIcon) playIcon.style.display = 'block';
+          if (pauseIcon) pauseIcon.style.display = 'none';
+        } else {
+          if (playIcon) playIcon.style.display = 'none';
+          if (pauseIcon) pauseIcon.style.display = 'block';
+        }
+      }
+
+      playPauseBtn.addEventListener('click', function (e) {
+        e.stopPropagation();
+        if (video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+        updatePlayPauseIcon();
+      });
+
+      video.addEventListener('play', updatePlayPauseIcon);
+      video.addEventListener('pause', updatePlayPauseIcon);
+
+      updatePlayPauseIcon();
+    }
+  }
+
   /* ── don't decode a video nobody can see ───────────────────────────────── */
   if (video && 'IntersectionObserver' in window) {
     new IntersectionObserver(function (entries) {

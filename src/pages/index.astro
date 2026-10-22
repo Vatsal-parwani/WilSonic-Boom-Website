@@ -37,6 +37,24 @@ const mail = `mailto:${site.email}?subject=Sponsorship%20enquiry%20%E2%80%94%20F
             <h1 class="etch vstage__title" data-vtitle data-etch>Wilsonic<br>Boom.</h1>
             <div class="vstage__frame" data-vframe>
               <video class="vstage__video" data-vvideo src={url('/video/sponsorship-video.mp4')} autoplay muted loop playsinline preload="metadata" aria-label="Wilsonic Boom sponsorship video"></video>
+              <!-- YouTube-style Controls Overlay (Fades in on video hover) -->
+              <div class="video-control-overlay">
+                <button class="video-control-btn" id="vid-rewind" type="button" aria-label="Rewind 5 seconds" title="Rewind 5s">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M11 18V6l-8.5 6 8.5 6zm.5-6l8.5 6V6l-8.5 6z"/></svg>
+                  <span class="skip-badge">-5s</span>
+                </button>
+
+                <button class="video-control-btn video-control-main" id="vid-playpause" type="button" aria-label="Play or Pause video" title="Play/Pause">
+                  <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+                  <svg class="icon-pause" style="display:none;" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
+                </button>
+
+                <button class="video-control-btn" id="vid-forward" type="button" aria-label="Forward 5 seconds" title="Forward 5s">
+                  <span class="skip-badge">+5s</span>
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 18l8.5-6L4 6v12zm9-12v12l8.5-6L13 6z"/></svg>
+                </button>
+              </div>
+
               <button class="btn btn--gold vstage__sound" data-vsound type="button" aria-pressed="false">
                 <svg class="ico" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M2 6 L5 6 L9 3 L9 13 L5 10 L2 10 Z" /><path class="ico__on" d="M11.5 5.5 Q13.5 8 11.5 10.5" /><path class="ico__on" d="M13 3.5 Q16 8 13 12.5" /><path class="ico__off" d="M11.5 6 L15 10 M15 6 L11.5 10" /></svg>
                 <span data-vsound-label>Unmute</span>
