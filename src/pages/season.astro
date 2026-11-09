@@ -80,6 +80,7 @@ const cell = (s: (typeof seasons)[number], k: string) => s.record.find((r) => r.
               <ul class="awards awards--row">
                 {s.awards.map((a) => (
                   <li class="award" data-cut>
+                    {a.image && <img class="award__image" src={a.image} alt={`${a.name} at ${a.event}`} loading="lazy" />}
                     <p class="award__name">{a.name}</p>
                     <p class="award__event">{a.event}</p>
                     <p class="body">{a.note}</p>

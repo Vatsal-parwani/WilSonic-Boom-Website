@@ -35,12 +35,14 @@
     {
       "name": "Finalist Alliance",
       "event": "Regionals, 2025–26",
-      "note": "Reached the final of the Regional Championship, in an alliance with our sister team Wilsobotics."
+      "note": "Reached the final of the Regional Championship, in an alliance with our sister team Wilsobotics.",
+      "image": "/images/finalist_alliance.png"
     },
     {
       "name": "Reach Award",
       "event": "Regionals, 2025–26",
-      "note": "FIRST's award for outreach: inspiring and reaching people beyond the team."
+      "note": "FIRST's award for outreach: inspiring and reaching people beyond the team.",
+      "image": "/images/reach_award.jpeg"
     },
     {
       "name": "Sustain Award",

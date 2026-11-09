@@ -1286,6 +1286,7 @@ a.inline:hover { border-bottom-color: var(--gold-hi); }
 .log__note { font-size: 0.86rem; color: var(--ink-2); }
 .awards { display: grid; gap: 14px; }
 .award { padding: clamp(20px, 2.2vw, 28px); }
+.award__image { display: block; width: 100%; aspect-ratio: 16 / 9; object-fit: cover; margin-bottom: 18px; }
 .award__name { font-weight: 700; font-stretch: 112%; font-size: 1.15rem; color: var(--gold-hi); }
 .award__event {
   margin-top: 4px;
@@ -2199,3 +2200,123 @@ button.cal__d.is-on::after {
   .post__cover { max-width: 320px; }
 }
 @media (prefers-reduced-motion: reduce) { .post, .post__cover img { transition: none; } .post:hover .post__cover img { transform: none; } }
+/* ✖️ Full-Screen Video Close Button (Placed on the Bottom-Left) */
+.vstage__close {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  z-index: 9999;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+.vstage__close:hover {
+  background: var(--gold, #d4af37);
+  color: #000;
+  transform: scale(1.08);
+}
+
+.vstage__close .ico {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Appears automatically when the video reaches full screen */
+.vstage.is-full .vstage__close {
+  opacity: 1;
+  pointer-events: auto;
+}
+/* Allow the title plate to expand and show all text when force-closed */
+.vstage.is-force-closed .plate--title {
+  overflow-y: visible !important;
+  max-height: none !important;
+}
+
+/* Ensure the pin container allows content flow when closed */
+.vstage.is-force-closed .vstage__pin {
+  height: auto !important;
+  position: relative !important;
+}
+/* Collapse the scroll gap and release the sticky container when force-closed */
+.vstage.is-force-closed {
+  height: auto !important;
+}
+
+.vstage.is-force-closed .vstage__pin {
+  position: relative !important;
+  height: auto !important;
+  top: auto !important;
+  transform: none !important;
+}
+
+.vstage.is-force-closed .hero__grid {
+  position: relative !important;
+}
+/* YouTube-style Hover Overlay */
+.video-control-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  background: rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+  pointer-events: none;
+  z-index: 10;
+}
+
+/* ONLY allow controls to show on hover once the video has expanded past the thin initial strip */
+.vstage.is-video-large .vstage__frame:hover .video-control-overlay,
+.vstage.is-full .vstage__frame:hover .video-control-overlay {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* Button styling */
+.video-control-btn {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  color: #fff;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+  position: relative;
+  flex-shrink: 0;
+}
+
+.video-control-btn:hover {
+  transform: scale(1.1);
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.video-control-btn svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.skip-badge {
+  font-size: 9px;
+  font-weight: bold;
+  position: absolute;
+  bottom: 2px;
+  letter-spacing: -0.5px;
+}

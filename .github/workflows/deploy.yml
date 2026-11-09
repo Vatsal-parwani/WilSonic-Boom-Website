@@ -23,20 +23,30 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - id: pages
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Configure GitHub Pages
+        id: pages
         uses: actions/configure-pages@v5
-      - uses: actions/setup-node@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
           node-version: 22
           cache: npm
-      - run: npm ci
-      - run: npm run build
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Astro site
+        run: npm run build
         env:
-          # "" with a custom domain, "/WilSonic-Boom-Website" on the default github.io address
           PAGES_BASE: ${{ steps.pages.outputs.base_path }}
           PAGES_SITE: ${{ steps.pages.outputs.origin }}
-      - uses: actions/upload-pages-artifact@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
@@ -47,5 +57,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - id: deployment
+      - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
