@@ -7,96 +7,122 @@ const awards = getAwards();
 const categories = getCategories();
 
 function getBadgeStyle(priority: string) {
-  if (priority === 'Highest Priority') return 'color: #eab308; border-color: rgba(234, 179, 8, 0.4);';
-  if (priority === 'High Priority' || priority === 'Primary Goal') return 'color: #eab308; border-color: rgba(234, 179, 8, 0.2);';
-  return 'color: #a3a3a3; border-color: rgba(255, 255, 255, 0.1);';
+  if (priority === 'Highest Priority') return 'color: #eab308; border-color: rgba(234, 179, 8, 0.4); background: rgba(234, 179, 8, 0.1);';
+  if (priority === 'High Priority' || priority === 'Primary Goal') return 'color: #eab308; border-color: rgba(234, 179, 8, 0.25); background: rgba(234, 179, 8, 0.05);';
+  return 'color: #a3a3a3; border-color: rgba(255, 255, 255, 0.12); background: rgba(255, 255, 255, 0.03);';
 }
 ---
 
-<Base current="awards" title={`Awards | ${site.name}`}>
+<Base current="awards" title={`Target Awards | ${site.name}`}>
   <div class="shell">
     <!-- Header Section -->
-    <section class="section" style="padding-top: 7rem; padding-bottom: 2rem;">
-      <div style="max-width: 800px; margin: 0 auto; text-align: center;">
-        <span style="font-family: monospace; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.1em; color: #eab308; background: rgba(234, 179, 8, 0.1); padding: 0.25rem 0.75rem; border-radius: 4px; border: 1px solid rgba(234, 179, 8, 0.2); display: inline-block; margin-bottom: 1rem;">
-          FTC Season Goals & Recognition
+    <section class="section" style="padding-top: 7rem; padding-bottom: 3rem;">
+      <div style="max-width: 840px; margin: 0 auto; text-align: center;">
+        <span style="font-family: monospace; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.12em; color: #eab308; background: rgba(234, 179, 8, 0.1); padding: 0.35rem 0.9rem; border-radius: 999px; border: 1px solid rgba(234, 179, 8, 0.25); display: inline-block; margin-bottom: 1.25rem;">
+          FTC Season Targets & Strategy
         </span>
-        <h1 style="font-size: 2.5rem; font-weight: 800; color: #fff; margin: 0 0 1rem 0;">
-          Awards We Are Targeting
+        <h1 style="font-size: 2.75rem; font-weight: 800; color: #fff; margin: 0 0 1.25rem 0; tracking: -0.02em;">
+          Target Awards
         </h1>
-        <p style="color: #a3a3a3; font-size: 1.1rem; line-height: 1.6; margin: 0;">
+        <p style="color: #a3a3a3; font-size: 1.15rem; line-height: 1.7; margin: 0;">
           As FIRST Tech Challenge Team <strong style="color: #fff;">{site.name} (#{site.teamNumber})</strong> from {site.school}, we strive for excellence across engineering innovation, software control, community outreach, and gracious professionalism.
         </p>
       </div>
     </section>
 
     <!-- Content Section -->
-    <section class="section" style="margin-bottom: 4rem;">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 3rem;">
-        <div class="card" style="padding: 1.5rem; text-align: center; background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px;">
-          <div style="font-size: 2.5rem; font-weight: 800; color: #eab308; line-height: 1;">{awards.length}</div>
-          <div style="font-size: 0.85rem; color: #a3a3a3; margin-top: 0.5rem; font-family: monospace; text-transform: uppercase;">Major FTC Awards</div>
+    <section class="section" style="margin-bottom: 5rem;">
+      <!-- Quick Stats Cards -->
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-bottom: 4rem;">
+        <div class="card" style="padding: 1.75rem; text-align: center; background: rgba(20, 20, 20, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+          <div style="font-size: 2.75rem; font-weight: 800; color: #eab308; line-height: 1;">{awards.length}</div>
+          <div style="font-size: 0.85rem; color: #a3a3a3; margin-top: 0.6rem; font-family: monospace; text-transform: uppercase; letter-spacing: 0.05em;">Major FTC Awards</div>
         </div>
-        <div class="card" style="padding: 1.5rem; text-align: center; background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px;">
-          <div style="font-size: 2.5rem; font-weight: 800; color: #eab308; line-height: 1;">{categories.length}</div>
-          <div style="font-size: 0.85rem; color: #a3a3a3; margin-top: 0.5rem; font-family: monospace; text-transform: uppercase;">Judging Categories</div>
+        <div class="card" style="padding: 1.75rem; text-align: center; background: rgba(20, 20, 20, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+          <div style="font-size: 2.75rem; font-weight: 800; color: #eab308; line-height: 1;">{categories.length}</div>
+          <div style="font-size: 0.85rem; color: #a3a3a3; margin-top: 0.6rem; font-family: monospace; text-transform: uppercase; letter-spacing: 0.05em;">Judging Categories</div>
         </div>
-        <div class="card" style="padding: 1.5rem; text-align: center; background: rgba(20, 20, 20, 0.6); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 8px;">
-          <div style="font-size: 2.5rem; font-weight: 800; color: #10b981; line-height: 1;">100%</div>
-          <div style="font-size: 0.85rem; color: #a3a3a3; margin-top: 0.5rem; font-family: monospace; text-transform: uppercase;">Gracious Professionalism</div>
+        <div class="card" style="padding: 1.75rem; text-align: center; background: rgba(20, 20, 20, 0.7); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.3);">
+          <div style="font-size: 2.75rem; font-weight: 800; color: #10b981; line-height: 1;">100%</div>
+          <div style="font-size: 0.85rem; color: #a3a3a3; margin-top: 0.6rem; font-family: monospace; text-transform: uppercase; letter-spacing: 0.05em;">Gracious Professionalism</div>
         </div>
       </div>
 
-      <div style="display: flex; flex-direction: column; gap: 3rem;">
+      <!-- Categories & Awards -->
+      <div style="display: flex; flex-direction: column; gap: 4rem;">
         {categories.map((category) => {
           const categoryAwards = awards.filter((a) => a.category === category);
           return (
             <div>
-              <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.1); padding-bottom: 0.75rem; margin-bottom: 1.5rem;">
-                <h2 style="font-size: 1.5rem; font-weight: 700; color: #fff; margin: 0; display: flex; align-items: center; gap: 0.5rem;">
-                  <span style="width: 8px; height: 8px; background-color: #eab308; border-radius: 50%; display: inline-block;"></span>
+              <!-- Category Header -->
+              <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 1px solid rgba(255, 255, 255, 0.12); padding-bottom: 1rem; margin-bottom: 2rem;">
+                <h2 style="font-size: 1.75rem; font-weight: 800; color: #fff; margin: 0; display: flex; align-items: center; gap: 0.75rem;">
+                  <span style="width: 10px; height: 10px; background-color: #eab308; border-radius: 50%; display: inline-block; box-shadow: 0 0 10px rgba(234, 179, 8, 0.6);"></span>
                   {category}
                 </h2>
-                <span style="font-size: 0.85rem; color: #a3a3a3; font-family: monospace;">{categoryAwards.length} Award{categoryAwards.length > 1 ? 's' : ''}</span>
+                <span style="font-size: 0.85rem; color: #a3a3a3; font-family: monospace; background: rgba(255,255,255,0.05); padding: 0.25rem 0.75rem; border-radius: 4px;">
+                  {categoryAwards.length} Award{categoryAwards.length > 1 ? 's' : ''}
+                </span>
               </div>
 
-              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.5rem;">
+              <!-- Award Cards Stack (Responsive Flex layout) -->
+              <div style="display: flex; flex-direction: column; gap: 2rem;">
                 {categoryAwards.map((award) => (
-                  <div class="card" style="background: rgba(18, 18, 18, 0.9); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
-                    {award.image && (
-                      <div style="position: relative; width: 100%; height: 220px; overflow: hidden; background: #0a0a0a; display: flex; align-items: center; justify-content: center; border-bottom: 1px solid rgba(255, 255, 255, 0.08);">
-                        <!-- Ambient blurred glow background filling empty space -->
-                        <div style={`position: absolute; inset: 0; background-image: url('${award.image}'); background-size: cover; background-position: center; filter: blur(16px); opacity: 0.35; transform: scale(1.2); pointer-events: none;`}></div>
-                        <!-- Full uncropped image on top -->
-                        <img 
-                          src={award.image} 
-                          alt={award.name} 
-                          style="position: relative; max-width: 100%; max-height: 100%; object-fit: contain; z-index: 1; filter: drop-shadow(0 4px 12px rgba(0,0,0,0.7));" 
-                        />
-                      </div>
-                    )}
-                    <div style="padding: 1.5rem;">
-                      <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
-                        <h3 style="font-size: 1.25rem; font-weight: 700; color: #fff; margin: 0;">{award.name}</h3>
-                        <span style={`font-size: 0.75rem; font-family: monospace; padding: 0.2rem 0.6rem; border-radius: 4px; border: 1px solid; white-space: nowrap; ${getBadgeStyle(award.priority)}`}>
-                          {award.priority}
-                        </span>
-                      </div>
-                      <p style="color: #d4d4d4; font-size: 0.95rem; line-height: 1.5; margin-bottom: 1.25rem;">{award.description}</p>
+                  <div class="card award-card" style="background: rgba(16, 16, 16, 0.95); border: 1px solid rgba(255, 255, 255, 0.09); border-radius: 14px; overflow: hidden; box-shadow: 0 12px 36px rgba(0,0,0,0.6); display: flex; flex-direction: column;">
+                    <div style="display: flex; flex-direction: row; flex-wrap: wrap; width: 100%;">
+                      
+                      <!-- Prominent Image Stage -->
+                      {award.image && (
+                        <div style="flex: 1 1 380px; min-height: 320px; max-height: 420px; position: relative; overflow: hidden; background: #080808; display: flex; align-items: center; justify-content: center; border-right: 1px solid rgba(255, 255, 255, 0.08); padding: 1.5rem;">
+                          <!-- Ambient Glass Blur Glow -->
+                          <div style={`position: absolute; inset: -20px; background-image: url('${award.image}'); background-size: cover; background-position: center; filter: blur(28px); opacity: 0.45; transform: scale(1.15); pointer-events: none;`}></div>
+                          
+                          <!-- High-Res Uncropped Picture Stage -->
+                          <img 
+                            src={award.image} 
+                            alt={award.name} 
+                            style="position: relative; max-width: 100%; max-height: 360px; width: auto; height: auto; object-fit: contain; z-index: 1; border-radius: 8px; filter: drop-shadow(0 8px 24px rgba(0,0,0,0.85));" 
+                          />
+                        </div>
+                      )}
 
-                      <div style="margin-bottom: 1.25rem;">
-                        <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; font-family: monospace; color: #eab308; letter-spacing: 0.05em; margin-bottom: 0.5rem;">Key Criteria:</div>
-                        <ul style="margin: 0; padding-left: 1.2rem; color: #a3a3a3; font-size: 0.9rem; line-height: 1.5;">
-                          {award.criteria.map((item) => (
-                            <li style="margin-bottom: 0.25rem;">{item}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    </div>
+                      <!-- Award Details Block -->
+                      <div style="flex: 2 1 400px; padding: 2rem; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                          <div style="display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; margin-bottom: 1rem;">
+                            <h3 style="font-size: 1.6rem; font-weight: 800; color: #fff; margin: 0; tracking: -0.01em;">{award.name}</h3>
+                            <span style={`font-size: 0.8rem; font-family: monospace; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 6px; border: 1px solid; white-space: nowrap; ${getBadgeStyle(award.priority)}`}>
+                              {award.priority}
+                            </span>
+                          </div>
 
-                    <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding: 1rem 1.5rem; background: rgba(0, 0, 0, 0.2);">
-                      <div style="font-size: 0.75rem; font-weight: 700; font-family: monospace; color: #eab308; text-transform: uppercase; margin-bottom: 0.25rem;">WilSonic Boom Strategy:</div>
-                      <div style="font-size: 0.85rem; color: #d4d4d4; font-style: italic; line-height: 1.4;">{award.teamStrategy}</div>
+                          <p style="color: #d4d4d4; font-size: 1rem; line-height: 1.6; margin-bottom: 1.5rem;">
+                            {award.description}
+                          </p>
+
+                          <div style="margin-bottom: 1.5rem; background: rgba(255, 255, 255, 0.02); padding: 1rem; border-radius: 8px; border: 1px solid rgba(255, 255, 255, 0.05);">
+                            <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; font-family: monospace; color: #eab308; letter-spacing: 0.08em; margin-bottom: 0.5rem;">
+                              Key Criteria & Focus:
+                            </div>
+                            <ul style="margin: 0; padding-left: 1.25rem; color: #a3a3a3; font-size: 0.925rem; line-height: 1.65;">
+                              {award.criteria.map((item) => (
+                                <li style="margin-bottom: 0.25rem;">{item}</li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+
+                        <!-- Team Strategy Footer -->
+                        <div style="border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 1rem; margin-top: 0.5rem;">
+                          <div style="font-size: 0.75rem; font-weight: 700; font-family: monospace; color: #eab308; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 0.25rem;">
+                            WilSonic Boom Strategy:
+                          </div>
+                          <div style="font-size: 0.9rem; color: #e5e5e5; font-style: italic; line-height: 1.5;">
+                            "{award.teamStrategy}"
+                          </div>
+                        </div>
+                      </div>
+
                     </div>
                   </div>
                 ))}
@@ -106,14 +132,15 @@ function getBadgeStyle(priority: string) {
         })}
       </div>
 
-      <div class="card" style="margin-top: 4rem; padding: 2.5rem; text-align: center; background: radial-gradient(circle at top, rgba(30, 30, 30, 0.9), rgba(15, 15, 15, 0.95)); border: 1px solid rgba(234, 179, 8, 0.3); border-radius: 12px;">
-        <h2 style="font-size: 1.75rem; font-weight: 700; color: #fff; margin: 0 0 0.5rem 0;">Support Our Award-Winning Journey</h2>
-        <p style="color: #a3a3a3; max-width: 600px; margin: 0 auto 1.5rem auto; font-size: 0.95rem;">
+      <!-- Support CTA Banner -->
+      <div class="card" style="margin-top: 5rem; padding: 3rem 2rem; text-align: center; background: radial-gradient(circle at top, rgba(35, 35, 35, 0.95), rgba(12, 12, 12, 0.98)); border: 1px solid rgba(234, 179, 8, 0.35); border-radius: 16px; box-shadow: 0 16px 40px rgba(0,0,0,0.5);">
+        <h2 style="font-size: 2rem; font-weight: 800; color: #fff; margin: 0 0 0.75rem 0;">Support Our Award-Winning Journey</h2>
+        <p style="color: #a3a3a3; max-width: 620px; margin: 0 auto 1.75rem auto; font-size: 1.05rem; line-height: 1.6;">
           Partner with WilSonic Boom as a sponsor or mentor to help us engineer excellence and reach our community!
         </p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-          <a class="btn btn--gold" href="/sponsor-the-team/">Sponsor the team</a>
-          <a class="btn" style="border: 1px solid rgba(255, 255, 255, 0.2); color: #fff;" href={`mailto:${site.email}`}>Contact Us</a>
+          <a class="btn btn--gold" href="/sponsor-the-team/" style="padding: 0.75rem 1.75rem; font-weight: 700;">Sponsor the team</a>
+          <a class="btn" style="border: 1px solid rgba(255, 255, 255, 0.2); color: #fff; padding: 0.75rem 1.75rem; font-weight: 600;" href={`mailto:${site.email}`}>Contact Us</a>
         </div>
       </div>
     </section>
