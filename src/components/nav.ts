@@ -2,7 +2,7 @@
 // as `current`, which sets aria-current on the matching link.
 export const NAV = [
   { key: 'robot', label: 'Robot', href: '/robot/' },
-  { key: 'season', label: 'Season', href: '/season/' },
+  { key: 'achievements', label: 'Achievements', href: '/achievements/' },
   { key: 'team', label: 'Team', href: '/team/' },
   { key: 'outreach', label: 'Outreach', href: '/outreach/' },
   { key: 'awards', label: 'Awards', href: '/awards/' },

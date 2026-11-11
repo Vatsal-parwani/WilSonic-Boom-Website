@@ -12,7 +12,7 @@ const played = seasons.filter((s) => s.record.length > 0);   // a new season sho
 const labels = [...new Set(played.flatMap((s) => s.record.map((r) => r.k)))];
 const cell = (s: (typeof seasons)[number], k: string) => s.record.find((r) => r.k === k)?.v ?? '—';
 ---
-<Base title="Season" current="season" description="Wilsonic Boom's competition record: every event, result and award, season by season.">
+<Base title="Achievements" current="achievements" description="Wilsonic Boom's competition record: every event, result and award, season by season.">
 
   <PageHead lines={['Record.']}>
     <p class="lede">
@@ -20,7 +20,7 @@ const cell = (s: (typeof seasons)[number], k: string) => s.record.find((r) => r.
     </p>
   </PageHead>
 
-  <section class="band band--tight" id="seasons">
+  <section class="band band--tight" id="achievements">
     <div class="wrap">
       <SeasonSwitch seasons={seasons} />
 
