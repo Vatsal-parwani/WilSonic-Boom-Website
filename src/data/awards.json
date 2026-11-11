@@ -1,0 +1,101 @@
+[
+  {
+    "id": "inspire-award",
+    "name": "Inspire Award",
+    "category": "Overall Excellence",
+    "image": "/images/inspire-award.jpg",
+    "description": "The most prestigious award given to the team that best embodies the 'challenge' of the FIRST Tech Challenge program. A top contender for all other judging awards.",
+    "priority": "Highest Priority",
+    "criteria": [
+      "Example of Gracious Professionalism® and positive team spirit",
+      "Engaging, comprehensive, and well-structured Engineering Portfolio",
+      "Robust community outreach and STEM advocacy",
+      "Competitive on-field robot performance with solid design principles"
+    ],
+    "teamStrategy": "Maintaining a rigorous engineering notebook with daily design updates, CAD breakdowns, and hosting community STEM workshops."
+  },
+  {
+    "id": "think-award",
+    "name": "Think Award",
+    "category": "Engineering & Design",
+    "image": "/images/think-award.jpg",
+    "description": "Given to the team that best reflects the journey taken through the engineering design process, documenting the clear path from concept to final robot build.",
+    "priority": "High Priority",
+    "criteria": [
+      "Clear engineering portfolio documenting design iterations and trade-offs",
+      "Effective use of CAD, prototyping, and rigorous testing notes",
+      "Thorough explanation of mathematical and scientific engineering principles"
+    ],
+    "teamStrategy": "Highlighting our iterative CAD models, failure analysis reports, and software testing logs."
+  },
+  {
+    "id": "connect-award",
+    "name": "Connect Award",
+    "category": "Outreach & Community",
+    "image": "/images/connect-award.jpg",
+    "description": "Awarded to the team that most successfully connects with their local community, engineering professionals, and the FIRST family.",
+    "priority": "High Priority",
+    "criteria": [
+      "Active collaboration with local STEM professionals and mentors",
+      "Networking with other FTC/FRC teams to share resources and knowledge",
+      "Demonstrated passion for spreading FIRST awareness outside meetings"
+    ],
+    "teamStrategy": "Partnering with local tech companies, mentoring rookie teams, and hosting community robot demo days."
+  },
+  {
+    "id": "innovate-award",
+    "name": "Innovate Award",
+    "category": "Engineering & Design",
+    "image": "/images/innovate-award.jpg",
+    "description": "Celebrates a team that thinks outside the box and has an innovative, creative, and reliable robot design solution for game challenges.",
+    "priority": "Targeting",
+    "criteria": [
+      "Elegantly designed, unique mechanical or electrical component",
+      "Clear conceptual documentation and patent-style description",
+      "High reliability and effectiveness during match play"
+    ],
+    "teamStrategy": "Showcasing our custom-engineered active intake and precision scoring mechanism with thorough stress-testing data."
+  },
+  {
+    "id": "control-award",
+    "name": "Control Award",
+    "category": "Software & Electronics",
+    "image": "/images/control-award.jpg",
+    "description": "Recognizes a team that uses sensors and software to increase robot functionality on the field, enhancing autonomous and driver-controlled capabilities.",
+    "priority": "High Priority",
+    "criteria": [
+      "Sophisticated autonomous routines utilizing encoders, vision, or IMU guidance",
+      "Clear documentation of control algorithms (PID, odometry, state machines)",
+      "Reliable sensor integration providing a clear competitive edge"
+    ],
+    "teamStrategy": "Detailing our custom Road Runner odometry tuning, AprilTag vision alignment, and closed-loop PID controls."
+  },
+  {
+    "id": "motivate-award",
+    "name": "Motivate Award",
+    "category": "Team Culture & Outreach",
+    "image": "/images/motivate-award.jpg",
+    "description": "Celebrates the team that embraces the culture of FIRST, demonstrating team spirit, professional branding, and inclusivity.",
+    "priority": "Targeting",
+    "criteria": [
+      "Team enthusiasm, spirit, and professional pit appearance",
+      "Strong marketing, branding, and team identity (WilSonic Boom identity)",
+      "Involving all team members in both technical and outreach roles"
+    ],
+    "teamStrategy": "Maintaining a professional pit display, matching team uniforms, and active engagement on social media."
+  },
+  {
+    "id": "winning-alliance",
+    "name": "Winning Alliance / Finalist",
+    "category": "Match Play",
+    "image": "/images/winning-alliance.jpg",
+    "description": "Awarded to the alliance partners that win or place as finalists in tournament elimination matches.",
+    "priority": "Primary Goal",
+    "criteria": [
+      "Consistent high-scoring autonomous and teleop performance",
+      "Reliable robot durability across back-to-back playoff matches",
+      "Strategic alliance selection and gracious cooperation"
+    ],
+    "teamStrategy": "Scouting opposing teams meticulously, building a versatile multi-role robot, and practicing defensive counter-strategies."
+  }
+]
