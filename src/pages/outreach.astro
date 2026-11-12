@@ -6,20 +6,18 @@ import Close from '../components/Close.astro';
 import outreach from '../data/outreach.json';
 import { lastCompleted as season } from '../lib/seasons';
 
-// the outreach award this season, shown beside the reach numbers
+// The outreach award this season, shown beside the reach numbers
 const reachAward = season.awards.find((a) => /reach/i.test(a.name));
 
-// The weekly session log. One square per session, grouped by month: a season of
-// them takes four lines, where a list would take three screens.
+// The weekly session log. One square per session, grouped by month.
 type Session = { date: string; title: string; who?: string; reached?: string };
 const sessions = ([...(outreach.sessions ?? [])] as Session[])
   .filter((x) => x.date)
   .sort((a, b) => b.date.localeCompare(a.date));
+
 const fmt = (iso: string, o: Intl.DateTimeFormatOptions) =>
   new Date(iso + 'T12:00:00').toLocaleDateString('en-GB', o);
-// One month on show at a time, with arrows to step back and forward. Every
-// month from the first session to the latest is there, including a month with
-// nothing in it, so stepping never skips. It opens on the latest.
+
 const sessionMonths = [...new Set(sessions.map((x) => x.date.slice(0, 7)))].sort();
 const monthKeys: string[] = [];
 if (sessionMonths.length) {
@@ -37,7 +35,7 @@ const calendars = monthKeys.map((m) => {
   const [y, mo] = m.split('-').map(Number);
   const first = new Date(Date.UTC(y, mo - 1, 1));
   const days = new Date(Date.UTC(y, mo, 0)).getUTCDate();
-  const lead = (first.getUTCDay() + 6) % 7;            // weeks start on Monday
+  const lead = (first.getUTCDay() + 6) % 7;             // weeks start on Monday
   const cells: ({ day: number; date: string } | null)[] = [
     ...Array<null>(lead).fill(null),
     ...Array.from({ length: days }, (_, i) => ({
@@ -47,20 +45,18 @@ const calendars = monthKeys.map((m) => {
   ];
   return { key: m, label: fmt(m + '-01', { month: 'long', year: 'numeric' }), cells };
 });
-// Clicking a day reads out everything that happened on it, or that nothing did.
+
 const onDay = (date: string) => sessions.filter((x) => x.date === date);
 const noneLine = (date: string) =>
   `${fmt(date, { day: 'numeric', month: 'short', year: 'numeric' })} · no sessions`;
 
-// Five fills for the kinds of session, stepping clearly apart in tone so
-// no two read as shades of each other. A day with more than one session takes
-// the white cell instead: splitting it into bands looked like a glitch.
 const SWATCH = [
-  { fill: 'var(--gold)', ink: '#0C0C0D' },
-  { fill: 'var(--gold-hi)', ink: '#0C0C0D' },
-  { fill: 'var(--alu)', ink: '#0C0C0D' },
-  { fill: '#5B5E63', ink: 'var(--ink)' },
-  { fill: '#2C2E33', ink: 'var(--ink)' },
+  { fill: 'var(--gold)', ink: '#0C0C0D' },     // 1. Rich Gold (e.g., FTC Team Collaboration)
+  { fill: '#38BDF8', ink: '#0C0C0D' },         // 2. Crisp Sky Blue (e.g., KS4 Coding Club)
+  { fill: '#34D399', ink: '#0C0C0D' },         // 3. Emerald Green (e.g., Computing Society)
+  { fill: '#F87171', ink: '#0C0C0D' },         // 4. Warm Coral Red (e.g., Junior Robotics)
+  { fill: '#C084FC', ink: '#0C0C0D' },         // 5. Soft Violet (e.g., Robotics Industry Club)
+  { fill: 'var(--alu)', ink: '#0C0C0D' },      // 6. Brushed Aluminium (extra buffer for future clubs)
 ];
 const MULTI = { fill: 'var(--ink)', ink: '#0C0C0D' };
 const kinds = [...new Set(sessions.map((x) => x.title))];
@@ -68,14 +64,18 @@ const swatch = (title: string) => SWATCH[kinds.indexOf(title) % SWATCH.length];
 const colour = (title: string) => swatch(title).fill;
 const cellFill = (day: Session[]) => (day.length === 1 ? swatch(day[0].title) : MULTI);
 
-const reachedTotal = sessions.reduce((n, x) => n + (parseInt(x.reached ?? '', 10) || 0), 0);
-// An empty log would read badly to a sponsor, so it is hidden on the live site
-// until there is something in it — but shown while running locally, so the team
-// can see where their entries will land.
 const showLog = sessions.length > 0 || import.meta.env.DEV;
+
+// Clean session line formatter handling group names and headcounts
 const line = (x: Session) =>
-  [fmt(x.date, { day: 'numeric', month: 'short', year: 'numeric' }), x.title, x.who, x.reached && `${x.reached} people`]
-    .filter(Boolean).join(' · ');
+  [
+    fmt(x.date, { day: 'numeric', month: 'short', year: 'numeric' }),
+    x.title === 'FTC Team Collaboration' ? `FTC Meeting: ${x.who}` : x.title,
+    x.title !== 'FTC Team Collaboration' ? x.who : undefined,
+    x.reached && `${x.reached} people`
+  ]
+    .filter(Boolean)
+    .join(' · ');
 ---
 <Base title="Outreach" current="outreach" description="What Wilsonic Boom does beyond the robot: outreach, events, and who it reaches.">
 
@@ -85,9 +85,6 @@ const line = (x: Session) =>
     </p>
   </PageHead>
 
-  <!-- ═══ REACH — the numbers and the award on one side, the season's
-       sessions on the other, so the page starts full rather than with a plate
-       and a gap ═══ -->
   <section class="band band--tight" id="reach">
     <div class="wrap">
       <div class:list={['reachgrid', { 'reachgrid--solo': !showLog }]}>
@@ -160,7 +157,6 @@ const line = (x: Session) =>
               )}
               <p class="slog__read num" data-slog-read>{openMonth ? (onDay(`${openMonth}-01`).map(line).join('\n') || noneLine(`${openMonth}-01`)) : ''}</p>
               </div>
-              <!-- without script every session still reads here, in full -->
               <ul class="slog__list">
                 {sessions.map((x) => <li class="num">{line(x)}</li>)}
               </ul>
@@ -171,7 +167,6 @@ const line = (x: Session) =>
     </div>
   </section>
 
-  <!-- ═══ CLUBS — the standing programme, the bulk of the reach ═══ -->
   {outreach.clubs?.length > 0 && (
     <section class="band band--alt band--tight" id="clubs">
       <div class="wrap">
@@ -190,7 +185,6 @@ const line = (x: Session) =>
     </section>
   )}
 
-  <!-- ═══ ACTIVITIES — one per full-width row, newest first ═══ -->
   <section class="band band--alt" id="activities">
     <div class="wrap">
       <h2 class="h2 etch" data-etch>Events</h2>

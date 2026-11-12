@@ -173,18 +173,21 @@
   }
 
   if (btn && video) {
-    btn.addEventListener('click', function () {
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
       if (video.muted) {
         video.muted = false;
         video.volume = 1;
-        var p = video.play();
-        if (p && p.catch) p.catch(function () { video.muted = true; syncButton(); });
-        setFull();
+        if (video.paused) {
+          var p = video.play();
+          if (p && p.catch) p.catch(function () { video.muted = true; syncButton(); });
+        }
       } else {
         video.muted = true;
       }
       syncButton();
     });
+    video.addEventListener('volumechange', syncButton);
     syncButton();
   }
 

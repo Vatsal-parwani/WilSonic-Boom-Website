@@ -19,6 +19,106 @@
   ],
   "sessions": [
     {
+      "date": "2026-11-25",
+      "title": "FTC Team Collaboration",
+      "who": "Pixel Perfect"
+    },
+    {
+      "date": "2026-11-19",
+      "title": "FTC Team Collaboration",
+      "who": "Wattsup"
+    },
+    {
+      "date": "2026-11-15",
+      "title": "FTC Team Collaboration",
+      "who": "Krakens"
+    },
+    {
+      "date": "2026-11-15",
+      "title": "FTC Team Collaboration",
+      "who": "Yaki Bots"
+    },
+    {
+      "date": "2026-11-13",
+      "title": "FTC Team Collaboration",
+      "who": "Syntax Terrors"
+    },
+    {
+      "date": "2026-11-12",
+      "title": "KS4 Coding Club",
+      "who": "Years 10–11",
+      "reached": "30"
+    },
+    {
+      "date": "2026-11-09",
+      "title": "FTC Team Collaboration",
+      "who": "Homosapiens"
+    },
+    {
+      "date": "2026-11-09",
+      "title": "Computing Society",
+      "who": "Years 10–13",
+      "reached": "30"
+    },
+    {
+      "date": "2026-11-06",
+      "title": "FTC Team Collaboration",
+      "who": "FTC Matrix"
+    },
+    {
+      "date": "2026-11-06",
+      "title": "Junior Robotics session",
+      "who": "Years 8–10",
+      "reached": "40"
+    },
+    {
+      "date": "2026-11-05",
+      "title": "Robotics Industry Club",
+      "who": "All years",
+      "reached": "15"
+    },
+    {
+      "date": "2026-11-04",
+      "title": "FTC Team Collaboration",
+      "who": "FTC Deadly"
+    },
+    {
+      "date": "2026-11-02",
+      "title": "Computing Society",
+      "who": "Years 10–13",
+      "reached": "30"
+    },
+    {
+      "date": "2026-10-16",
+      "title": "Junior Robotics session",
+      "who": "Years 8–10",
+      "reached": "40"
+    },
+    {
+      "date": "2026-10-15",
+      "title": "KS4 Coding Club",
+      "who": "Years 10–11",
+      "reached": "30"
+    },
+    {
+      "date": "2026-10-12",
+      "title": "Computing Society",
+      "who": "Years 10–13",
+      "reached": "30"
+    },
+    {
+      "date": "2026-10-09",
+      "title": "Junior Robotics session",
+      "who": "Years 8–10",
+      "reached": "40"
+    },
+    {
+      "date": "2026-10-08",
+      "title": "Robotics Industry Club",
+      "who": "All years",
+      "reached": "15"
+    },
+    {
       "date": "2026-10-05",
       "title": "Computing Society",
       "who": "Years 10–13",
