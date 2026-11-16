@@ -1,10 +1,12 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
+import preact from '@astrojs/preact';
 
 // On GitHub Pages the deploy workflow supplies the address and sub-path
 // (.github/workflows/deploy.yml). Locally, and on hosts that serve from the
 // root, both fall back to the defaults below.
 export default defineConfig({
+  integrations: [preact()],
   site: process.env.PAGES_SITE || 'https://wilsonicboom.com',
   base: process.env.PAGES_BASE || '/',
   trailingSlash: 'ignore',

@@ -1,0 +1,280 @@
+.ra-root {
+  position: relative;
+  width: 100%;
+  min-height: 430px;
+  aspect-ratio: 16 / 10;
+  background: radial-gradient(circle at 50% 35%, #1d1e21 0%, #101012 75%, #0a0a0b 100%);
+  border: 1px solid var(--seam, #2e3034);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-family: Archivo, "Helvetica Neue", Arial, sans-serif;
+  color: var(--ink, #eae8e4);
+  user-select: none;
+}
+
+.ra-canvas-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.ra-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  outline: none;
+}
+
+/* While locked, page scrolling on trackpads and phones passes straight through */
+.ra-canvas--locked {
+  pointer-events: none;
+  touch-action: pan-y;
+}
+
+.ra-canvas--active {
+  pointer-events: auto;
+  touch-action: none;
+  cursor: grab;
+}
+
+.ra-canvas--active:active {
+  cursor: grabbing;
+}
+
+/* ── Top HUD Bar ── */
+.ra-hud-top {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 10px 12px;
+  pointer-events: none;
+}
+
+.ra-hud-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  pointer-events: auto;
+}
+
+.ra-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 10px;
+  background: rgba(16, 16, 18, 0.86);
+  border: 1px solid var(--seam, #2e3034);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-2, #adafb3);
+  backdrop-filter: blur(4px);
+}
+
+.ra-badge strong {
+  color: var(--gold-hi, #efc069);
+  font-size: 14px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* ── Buttons ── */
+.ra-btn {
+  appearance: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 11px;
+  background: rgba(23, 24, 26, 0.92);
+  border: 1px solid var(--seam, #2e3034);
+  color: var(--ink, #eae8e4);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.ra-btn:hover {
+  background: var(--plate-hi, #1d1e21);
+  border-color: var(--gold, #c89434);
+}
+
+.ra-btn:focus-visible {
+  outline: 2px solid var(--gold-hi, #efc069);
+  outline-offset: 2px;
+}
+
+.ra-btn--gold {
+  background: var(--gold, #c89434);
+  border-color: var(--gold-hi, #efc069);
+  color: #0b0b0c;
+}
+
+.ra-btn--gold:hover {
+  background: var(--gold-hi, #efc069);
+  border-color: var(--gold-hi, #efc069);
+  color: #0b0b0c;
+}
+
+.ra-btn--active {
+  border-color: var(--gold-hi, #efc069);
+  color: var(--gold-hi, #efc069);
+}
+
+/* ── Center Prompt before user clicks Interact ── */
+.ra-lock-prompt {
+  position: relative;
+  z-index: 2;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  pointer-events: auto;
+  text-align: center;
+}
+
+.ra-lock-hint {
+  margin: 0;
+  padding: 3px 8px;
+  background: rgba(10, 10, 11, 0.78);
+  font-size: 11px;
+  color: var(--ink-2, #adafb3);
+  border: 1px solid var(--seam-soft, #232528);
+}
+
+/* ── Bottom Control Bar ── */
+.ra-controls {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 12px;
+  background: linear-gradient(to top, rgba(10, 10, 11, 0.92) 0%, rgba(10, 10, 11, 0.55) 75%, transparent 100%);
+  pointer-events: none;
+}
+
+.ra-controls > * {
+  pointer-events: auto;
+}
+
+.ra-dpad {
+  display: grid;
+  grid-template-columns: repeat(3, 36px);
+  grid-template-rows: repeat(2, 32px);
+  gap: 4px;
+}
+
+.ra-dpad__btn {
+  padding: 0;
+  font-size: 13px;
+  line-height: 1;
+}
+
+.ra-dpad__up {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+.ra-dpad__left {
+  grid-column: 1;
+  grid-row: 2;
+}
+
+.ra-dpad__down {
+  grid-column: 2;
+  grid-row: 2;
+}
+
+.ra-dpad__right {
+  grid-column: 3;
+  grid-row: 2;
+}
+
+.ra-action-stack {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.ra-aim-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 4px;
+  background: rgba(23, 24, 26, 0.9);
+  border: 1px solid var(--seam, #2e3034);
+}
+
+.ra-aim-label {
+  font-size: 11px;
+  color: var(--ink-2, #adafb3);
+  padding: 0 4px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ra-btn--shoot {
+  padding: 8px 16px;
+  font-size: 13px;
+}
+
+/* ── Loading / Fallback ── */
+.ra-fallback {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+}
+
+.ra-fallback img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.ra-fallback__note {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  margin: 0;
+  padding: 6px 10px;
+  background: rgba(16, 16, 18, 0.88);
+  border: 1px solid var(--seam, #2e3034);
+  font-size: 12px;
+  color: var(--ink-2, #adafb3);
+}
+
+.ra-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .ra-root {
+    min-height: 460px;
+    aspect-ratio: auto;
+  }
+
+  .ra-lock-hint {
+    display: none;
+  }
+}

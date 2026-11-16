@@ -7,6 +7,7 @@ import Specs from '../components/Specs.astro';
 import DataPlate from '../components/DataPlate.astro';
 import MoreLink from '../components/MoreLink.astro';
 import Close from '../components/Close.astro';
+import RobotStage from '../components/RobotStage.astro';
 import { url, href } from '../components/url';
 import site from '../data/site.json';
 import SponsorStrip from '../components/SponsorStrip.astro';
@@ -229,14 +230,18 @@ const mail = `mailto:${site.email}?subject=Sponsorship%20enquiry%20%E2%80%94%20F
     </div>
   </section>
 
-  <!-- ═══ THE MACHINE — a teaser; the assembly lives on /robot ═══ -->
+  <!-- ═══ THE MACHINE — interactive 3D robot stage ═══ -->
   <section class="band" id="machine">
     <div class="wrap">
       <h2 class="h2 etch" data-etch>The machine</h2>
       <div class="teaser">
-        <figure class="teaser__stage" data-cut>
-          <Slot name="Robot, full assembly" spec="16:10 · 2800 px" ratio="16 / 10" src={latest?.photo ?? null} alt="The competition robot" />
-        </figure>
+        <div class="teaser__stage" data-cut>
+          <RobotStage
+            fallbackSrc={latest?.photo ? href(latest.photo) : url('/images/robot-v2-1-nationals.webp')}
+            fallbackAlt="The Wilsonic Boom competition robot"
+            modelUrl={url('/models/robot.glb')}
+          />
+        </div>
         <div class="teaser__side">
           {latest && <p class="h4 teaser__ver">{/\./.test(latest.id) ? latest.id : `${latest.id}.0`} · {latest.title}</p>}
           <p class="body">

@@ -1,0 +1,21 @@
+---
+import RobotArena from './RobotArena.jsx';
+
+interface Props {
+  fallbackSrc: string;
+  fallbackAlt?: string;
+  modelUrl?: string | null;
+}
+
+const {
+  fallbackSrc,
+  fallbackAlt = 'The WilSonic Boom competition robot',
+  modelUrl = null,
+} = Astro.props;
+---
+<RobotArena
+  client:visible
+  fallbackSrc={fallbackSrc}
+  fallbackAlt={fallbackAlt}
+  modelUrl={modelUrl}
+/>

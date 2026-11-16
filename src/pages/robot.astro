@@ -4,6 +4,8 @@ import PageHead from '../components/PageHead.astro';
 import SeasonSwitch from '../components/SeasonSwitch.astro';
 import VersionRail from '../components/VersionRail.astro';
 import Close from '../components/Close.astro';
+import RobotStage from '../components/RobotStage.astro';
+import { url } from '../components/url';
 import { seasons, seasonsWithRobot } from '../lib/seasons';
 
 // Open on the newest season that has a robot to show; a season that has only
@@ -29,7 +31,20 @@ const open = (seasonsWithRobot[0] ?? seasons[0]).slug;
           </div>
           {s.steps.length > 0
             ? <VersionRail season={s} />
-            : <p class="body body--wide">This season&rsquo;s robot is in design.</p>}
+            : (
+              <div style="display: grid; gap: 1.5rem; max-width: 960px;">
+                <p class="body body--wide">
+                  This season&rsquo;s robot is in design &mdash; try out the interactive 3D robot below.
+                </p>
+                <div class="teaser__stage" data-cut>
+                  <RobotStage
+                    fallbackSrc={url('/images/robot-v2-1-nationals.webp')}
+                    fallbackAlt="The Wilsonic Boom competition robot"
+                    modelUrl={url('/models/robot.glb')}
+                  />
+                </div>
+              </div>
+            )}
         </div>
       ))}
     </div>
