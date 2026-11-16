@@ -6,11 +6,10 @@ import VersionRail from '../components/VersionRail.astro';
 import Close from '../components/Close.astro';
 import RobotStage from '../components/RobotStage.astro';
 import { url } from '../components/url';
-import { seasons, seasonsWithRobot } from '../lib/seasons';
+import { seasons } from '../lib/seasons';
 
-// Open on the newest season that has a robot to show; a season that has only
-// just started is still one click away.
-const open = (seasonsWithRobot[0] ?? seasons[0]).slug;
+// Open on the 2026–27 season by default (falling back to the newest season).
+const open = (seasons.find((s) => s.slug.startsWith('2026')) ?? seasons[0]).slug;
 ---
 <Base title="Robot" current="robot" description="The Wilsonic Boom competition robot, version by version: every build, every revision, and what each one changed.">
 
