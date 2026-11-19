@@ -3,7 +3,7 @@
     "id": "inspire-award",
     "name": "Inspire Award",
     "category": "Overall Excellence",
-    "image": "/images/inspire-award.jpg",
+    "image": "/images/awards/inspire-award.jpg",
     "description": "The most prestigious award given to the team that best embodies the 'challenge' of the FIRST Tech Challenge program.",
     "priority": "Highest Priority",
     "criteria": [
@@ -18,7 +18,7 @@
     "id": "design-award",
     "name": "Design Award",
     "category": "Machine, Creativity, Innovation (MCI)",
-    "image": "/images/design-award.jpg",
+    "image": "/images/awards/design-award.jpg",
     "description": "Recognizes industrial design elements of the robot that are both functional and aesthetic.",
     "priority": "High Priority",
     "criteria": [
@@ -32,7 +32,7 @@
     "id": "control-award",
     "name": "Control Award",
     "category": "Machine, Creativity, Innovation (MCI)",
-    "image": "/images/control-award.jpg",
+    "image": "/images/awards/control-award.jpg",
     "description": "Recognizes a team that uses sensors and software to increase robot functionality on the field.",
     "priority": "High Priority",
     "criteria": [
@@ -46,7 +46,7 @@
     "id": "innovate-award",
     "name": "Innovate Award",
     "category": "Machine, Creativity, Innovation (MCI)",
-    "image": "/images/innovate-award.jpg",
+    "image": "/images/awards/innovate-award.jpg",
     "description": "Celebrates a team that thinks outside the box and has an innovative, creative, and reliable robot design solution.",
     "priority": "Targeting",
     "criteria": [
@@ -60,7 +60,7 @@
     "id": "connect-award",
     "name": "Connect Award",
     "category": "Team Attributes (TA)",
-    "image": "/images/connect-award.jpg",
+    "image": "/images/awards/connect-award.jpg",
     "description": "Awarded to the team that most successfully connects with their local community, engineering professionals, and the FIRST family.",
     "priority": "High Priority",
     "criteria": [
@@ -74,7 +74,7 @@
     "id": "reach-award",
     "name": "Reach Award",
     "category": "Team Attributes (TA)",
-    "image": "/images/reach-award.jpg",
+    "image": "/images/awards/reach-award.jpg",
     "description": "Celebrates a team that has successfully introduced and recruited new people into FIRST.",
     "priority": "Targeting",
     "criteria": [
@@ -88,7 +88,7 @@
     "id": "sustain-award",
     "name": "Sustain Award",
     "category": "Team Attributes (TA)",
-    "image": "/images/sustain-award.jpg",
+    "image": "/images/awards/sustain-award.jpg",
     "description": "Recognizes a team that has established the leadership, financial resources, and organizational practices for long-term continuity.",
     "priority": "Targeting",
     "criteria": [
@@ -102,7 +102,7 @@
     "id": "think-award",
     "name": "Think Award",
     "category": "Other Awards",
-    "image": "/images/think-award.jpg",
+    "image": "/images/awards/think-award.jpg",
     "description": "Given to the team that best reflects the journey taken through the engineering design process in their portfolio.",
     "priority": "High Priority",
     "criteria": [
@@ -116,7 +116,7 @@
     "id": "judges-choice-award",
     "name": "Judges' Choice Award",
     "category": "Other Awards",
-    "image": "/images/judges-choice.jpg",
+    "image": "/images/awards/judges-choice.jpg",
     "description": "Given by the judges to a team whose unique efforts, performance, or dynamics merit recognition.",
     "priority": "Special Recognition",
     "criteria": [

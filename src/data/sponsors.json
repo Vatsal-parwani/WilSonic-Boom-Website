@@ -3,7 +3,7 @@
     {
       "name": "Blue Education",
       "url": "https://blueeducation.org",
-      "logo": "/images/Untitled design.png",
+      "logo": "/images/sponsors/Untitled design.png",
       "tier": "gold",
       "since": "2025",
       "until": "",
@@ -14,7 +14,7 @@
     {
       "name": "Accu",
       "url": "https://accu.co.uk",
-      "logo": "/images/SponsorAccu.png",
+      "logo": "/images/sponsors/SponsorAccu.png",
       "tier": "gold",
       "since": "2026",
       "until": "",
@@ -25,7 +25,7 @@
     {
       "name": "VeracIT",
       "url": "https://veracit.co.uk",
-      "logo": "/images/SponsorVeracIT.png",
+      "logo": "/images/sponsors/SponsorVeracIT.png",
       "tier": "silver",
       "since": "2026",
       "until": "",
@@ -47,7 +47,7 @@
     {
       "name": "Chartered Institution of Civil Engineering Surveyors",
       "url": "https://cices.org",
-      "logo": "/images/SponsorCices.png",
+      "logo": "/images/sponsors/SponsorCices.png",
       "tier": "gold",
       "since": "2025",
       "until": "",

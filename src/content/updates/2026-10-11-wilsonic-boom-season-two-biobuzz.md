@@ -3,7 +3,7 @@ title: 'Wilsonic Boom Season Two: Biobuzz'
 date: 2026-10-11
 author: Razi, Anshul, Savith and Dhir
 summary: After a successful 2025-2026 Decode season, Wilsonic Boom are back for the 2026-2027 Biobuzz FTC season.
-cover: /images/first_biobuzz_logo_ftc_lockup_background-card-1280x850-1-afc23f79.webp
+cover: /images/updates/first_biobuzz_logo_ftc_lockup_background-card-1280x850-1-afc23f79.webp
 draft: false
 ---
 

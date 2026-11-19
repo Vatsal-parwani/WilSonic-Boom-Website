@@ -203,7 +203,7 @@ const mail = `mailto:${site.email}?subject=Sponsorship%20enquiry%20%E2%80%94%20F
       <div class="awards-gallery" style="margin-top: 2.5rem; display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;">
         
         <figure style="margin: 0; background: var(--bg-plate, rgba(0,0,0,0.2)); border: 1px solid rgba(255,255,255,0.1); padding: 1rem; border-radius: 4px;">
-          <img src={url('/images/reach_award.jpeg')} alt="The Reach Award" style="width: 100%; height: auto; border-radius: 2px; display: block;" decoding="async" />
+          <img src={url('/images/awards/reach_award.jpeg')} alt="The Reach Award" style="width: 100%; height: auto; border-radius: 2px; display: block;" decoding="async" />
           <figcaption style="font-size: 0.9rem; margin-top: 0.75rem; line-height: 1.4;">
             <strong style="color: var(--gold, #d4af37);">Reach Award</strong><br>
             <span style="opacity: 0.8; font-size: 0.85rem;">Won at Regionals for expanding STEM outreach and running school clubs.</span>
@@ -211,7 +211,7 @@ const mail = `mailto:${site.email}?subject=Sponsorship%20enquiry%20%E2%80%94%20F
         </figure>
 
         <figure style="margin: 0; background: var(--bg-plate, rgba(0,0,0,0.2)); border: 1px solid rgba(255,255,255,0.1); padding: 1rem; border-radius: 4px;">
-          <img src={url('/images/finalist_alliance.png')} alt="Finalist Alliance Trophy" style="width: 100%; height: auto; border-radius: 2px; display: block;" decoding="async" />
+          <img src={url('/images/awards/finalist_alliance.png')} alt="Finalist Alliance Trophy" style="width: 100%; height: auto; border-radius: 2px; display: block;" decoding="async" />
           <figcaption style="font-size: 0.9rem; margin-top: 0.75rem; line-height: 1.4;">
             <strong style="color: var(--gold, #d4af37);">Finalist Alliance</strong><br>
             <span style="opacity: 0.8; font-size: 0.85rem;">Secured during high-stakes regional match playoffs.</span>
@@ -219,7 +219,7 @@ const mail = `mailto:${site.email}?subject=Sponsorship%20enquiry%20%E2%80%94%20F
         </figure>
 
         <figure style="margin: 0; background: var(--bg-plate, rgba(0,0,0,0.2)); border: 1px solid rgba(255,255,255,0.1); padding: 1rem; border-radius: 4px;">
-          <img src={url('/images/robot-v2-1-nationals.webp')} alt="Robot at UK Nationals" style="width: 100%; height: auto; border-radius: 2px; display: block;" decoding="async" />
+          <img src={url('/images/robots/robot-v2-1-nationals.webp')} alt="Robot at UK Nationals" style="width: 100%; height: auto; border-radius: 2px; display: block;" decoding="async" />
           <figcaption style="font-size: 0.9rem; margin-top: 0.75rem; line-height: 1.4;">
             <strong style="color: var(--gold, #d4af37);">Sustain Award (Nationals)</strong><br>
             <span style="opacity: 0.8; font-size: 0.85rem;">Competing and winning recognition at the UK National Championship.</span>
@@ -237,7 +237,7 @@ const mail = `mailto:${site.email}?subject=Sponsorship%20enquiry%20%E2%80%94%20F
       <div class="teaser">
         <div class="teaser__stage" data-cut>
           <RobotStage
-            fallbackSrc={latest?.photo ? href(latest.photo) : url('/images/robot-v2-1-nationals.webp')}
+            fallbackSrc={latest?.photo ? href(latest.photo) : url('/images/robots/robot-v2-1-nationals.webp')}
             fallbackAlt="The Wilsonic Boom competition robot"
             modelUrl={url('/models/robot.glb')}
           />

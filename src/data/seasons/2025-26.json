@@ -36,13 +36,13 @@
       "name": "Finalist Alliance",
       "event": "Regionals, 2025–26",
       "note": "Reached the final of the Regional Championship, in an alliance with our sister team Wilsobotics.",
-      "image": "/images/finalist_alliance.png"
+      "image": "/images/awards/finalist_alliance.png"
     },
     {
       "name": "Reach Award",
       "event": "Regionals, 2025–26",
       "note": "FIRST's award for outreach: inspiring and reaching people beyond the team.",
-      "image": "/images/reach_award.jpeg"
+      "image": "/images/awards/reach_award.jpeg"
     },
     {
       "name": "Sustain Award",
@@ -99,7 +99,7 @@
             "v": "It worked, but we had no control over the angle of its hood."
           }
         ],
-        "photo": "/images/robot-v1-scrimmage.webp",
+        "photo": "/images/robots/robot-v1-scrimmage.webp",
         "specs": [
           {
             "k": "Motors",
@@ -230,7 +230,7 @@
             "v": "The drivetrain's sprockets and chains gave us problems."
           }
         ],
-        "photo": "/images/robot-v2-regionals.webp",
+        "photo": "/images/robots/robot-v2-regionals.webp",
         "specs": [
           {
             "k": "Motors",
@@ -320,7 +320,7 @@
                 "v": "The polycarbonate plates and the adjustable hood."
               }
             ],
-            "photo": "/images/robot-v2-1-nationals.webp",
+            "photo": "/images/robots/robot-v2-1-nationals.webp",
             "specs": [],
             "changes": [],
             "subsystems": [
