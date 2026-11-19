@@ -26,7 +26,7 @@ import { url } from '../components/url';
           <ul class:list={['sponsor-list', { 'sponsor-list--grid': !big }]}>
             {g.sponsors.map((s) => (
               <li class:list={['sp', { 'sp--top': big }]} data-cut>
-                <div class="sp__logo"><Slot logo small spec="Logo · 1200 × 500 px" src={s.logo} alt={s.name} /></div>
+                {'logo' in s && s.logo ? <div class="sp__logo"><Slot logo small spec="Logo · 1200 × 500 px" src={s.logo} alt={s.name} /></div> : <div class="sp__logo sp__logo--empty" aria-hidden="true" />}
                 <div class="sp__b">
                   <h3 class="sp__name"><a class="inline" href={s.url}>{s.name}</a></h3>
                   <p class="sp__since num">{g.name}{s.since && <> · since {s.since}</>}</p>
@@ -61,7 +61,7 @@ import { url } from '../components/url';
         <ul class="past">
           {pastSponsors.map((s) => (
             <li class="past__i" data-cut>
-              <div class="past__logo"><Slot logo small spec="Logo · 1200 × 500 px" src={s.logo} alt={s.name} /></div>
+              {'logo' in s && s.logo ? <div class="past__logo"><Slot logo small spec="Logo · 1200 × 500 px" src={s.logo} alt={s.name} /></div> : <div class="past__logo past__logo--empty" aria-hidden="true" />}
               <div>
                 <h3 class="sp__name"><a class="inline" href={s.url}>{s.name}</a></h3>
                 <p class="sp__since num">{s.since === s.until ? s.since : `${s.since}–${s.until}`}</p>

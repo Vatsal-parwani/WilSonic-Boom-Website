@@ -5,9 +5,53 @@
       "url": "https://blueeducation.org",
       "logo": "/images/Untitled design.png",
       "tier": "gold",
-      "since": "2026",
+      "since": "2025",
       "until": "",
       "about": "A global premier admissions consultancy and tutoring platform staffed by Oxbridge and Ivy League graduates to guide international students into elite universities.",
+      "gave": "Cash",
+      "wentInto": "Funded the Wilson's Robotics European Premier Event campaign"
+    },
+    {
+      "name": "Accu",
+      "url": "https://accu.co.uk",
+      "logo": "/images/SponsorAccu.png",
+      "tier": "gold",
+      "since": "2026",
+      "until": "",
+      "about": "A global online supplier and manufacturer of precision engineering components.",
+      "gave": "Store Credit",
+      "wentInto": "Funded the Wilson's Robotics European Premier Event campaign"
+    },
+    {
+      "name": "VeracIT",
+      "url": "https://veracit.co.uk",
+      "logo": "/images/SponsorVeracIT.png",
+      "tier": "silver",
+      "since": "2026",
+      "until": "",
+      "about": "An IT consulting and software solutions provider that helps businesses modernize their operations through cloud computing, artificial intelligence, and custom engineering",
+      "gave": "Cash",
+      "wentInto": "Funded the Wilson's Robotics European Premier Event campaign"
+    },
+    {
+      "name": "Skyward Solutions",
+      "url": "",
+      "logo": "",
+      "tier": "silver",
+      "since": "2026",
+      "until": "",
+      "about": "A boutique, UK-based software development and IT consultancy that builds bespoke, user-focused digital solutions for enterprise clients.",
+      "gave": "Cash",
+      "wentInto": "Funded the Wilson's Robotics European Premier Event campaign"
+    },
+    {
+      "name": "Chartered Institution of Civil Engineering Surveyors",
+      "url": "https://cices.org",
+      "logo": "/images/SponsorCices.png",
+      "tier": "gold",
+      "since": "2025",
+      "until": "",
+      "about": "An international professional body that regulates, educates, and supports specialists working in civil engineering surveying.",
       "gave": "Cash",
       "wentInto": "Funded the Wilson's Robotics European Premier Event campaign"
     }

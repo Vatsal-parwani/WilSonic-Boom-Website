@@ -1960,6 +1960,7 @@ button.cal__d.is-on::after {
   gap: clamp(12px, 1.4vw, 18px);
 }
 .past__i { padding: 10px; display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 16px; align-items: center; }
+.sp__logo--empty, .past__logo--empty { aspect-ratio: 1200 / 500; }
 .past__i .sp__name { font-size: 1rem; }
 .past__i .sp__since { margin-top: 4px; }
 @media (max-width: 900px) { .past { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

@@ -17,7 +17,7 @@ const rank = (s: Sponsor) => {
 export const isHeadline = (s: Sponsor) => rank(s) < 2;
 
 // every logo is checked once, when the site is built
-for (const s of data.sponsors) checkLogo(s.logo, s.name);
+for (const s of data.sponsors) checkLogo('logo' in s ? s.logo : undefined, s.name);
 
 // A sponsor with an `until` season has stopped; they keep their place on
 // /sponsors under "Previously", and drop out of the strip on every page.
